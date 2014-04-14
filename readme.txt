@@ -10,7 +10,11 @@ Stable tag: 1.0.0.0
 
 == Description ==
 
-BLOGCHAT is a live comment and chat system that was created specifically for blogs. With BLOGCHAT, each article or page on your blog can have its own dedicated real time discussion area. BLOGCHAT can be used for both comments and chat; however, it does not replace your existing comment system. It also comes with a whole host of bells and whistles: video conferencing, chat rooms, instant messaging, games, to name a few. BLOGCHAT is a specialized version of the FCChat Chat Platform (See also: FCChat Widget Plugin)
+BLOGCHAT is a live comment and chat system that was created specifically for blogs. With BLOGCHAT, each article or page on your blog can have its own dedicated real time discussion area. 
+
+BLOGCHAT can be used for both comments and chat; however, it does not replace your existing comment system. It also comes with a whole host of bells and whistles: video conferencing, chat rooms, instant messaging, games, to name a few. 
+
+BLOGCHAT is a specialized version of the FCChat Chat Platform (See also: FCChat Widget Plugin: http://wordpress.org/plugins/fcchat/)
 
 
 DEMO
@@ -22,7 +26,7 @@ http://www.fastcatsoftware.com/blogchat/?p=1
 
 ADDITIONAL DOWNLOADS REQUIRED
 
-TO use this plugin, you will first need to install the blogchat client in the root directory of your wordpress installation. You may download the client here: www.fastcatsoftware.com/FCChat/download/blogchat.zip
+To use this plugin, you will first need to install the blogchat client in the root directory of your wordpress installation. You may download the client here: www.fastcatsoftware.com/FCChat/download/blogchat.zip
 
 Place the "blogchat" folder in your wp root directory.
 
