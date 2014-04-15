@@ -14,7 +14,7 @@ BLOGCHAT is a live comment and chat system that was created specifically for blo
 
 BLOGCHAT can be used for both comments and chat; however, it does not replace your existing comment system. It also comes with a whole host of bells and whistles: video conferencing, chat rooms, instant messaging, games, to name a few. 
 
-BLOGCHAT is a specialized version of the FCChat Chat Platform (See also: FCChat Widget Plugin: http://wordpress.org/plugins/fcchat/)
+BLOGCHAT is a specialized version of the FCChat Chat Platform (See also: FCChat Widget Plugin- http://wordpress.org/plugins/fcchat/)
 
 
 DEMO
