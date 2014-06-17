@@ -7,8 +7,11 @@ Requires at least: 2.7
 Tested up to: 3.9.1
 Stable tag: 1.0.0
 
+BLOGCHAT is a live comment and chat system.
 
 == Description ==
+
+IMPORTANT UPDATE: Please update your host value to 'chat.fastcatsoftware.com'.
 
 BLOGCHAT is a live comment and chat system that was created specifically for blogs. With BLOGCHAT, each article or page on your blog can have its own dedicated real time discussion area. 
 
