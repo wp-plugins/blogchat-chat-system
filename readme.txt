@@ -5,7 +5,7 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.0.0.4
+Stable tag: 1.0.1
 
 BLOGCHAT is a live comment and chat system.
 
@@ -162,6 +162,9 @@ Version 1.0.0.0 of BLOGCHAT is the first version available as a wordpress plugin
 
 Updated the url to the shared document plugin.
 
+= 1.0.1 = 
+
+Added an option to remove the Online Panel from the ChatCenter. Removed the send buttons.
 
 == Upgrade Notice ==
 

@@ -143,6 +143,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 		
 		"cmntwmodes"=>array("value"=>"","type"=>"comment","desc"=>"CHATCENTER WINDOW MODES"),
 		"chatcenter_layout"=>array("value"=>"0","type"=>"radio2","ops"=>array(array("value"=>"0","desc"=>"Chat rooms and messages"),array("value"=>"1","desc"=>"Messages only")), "quote"=>"0","desc"=>""),
+		"show_online_panel"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Show the online panel in the ChatCenter."),
 		"open_chatcenter_in_new_tab"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Launch the ChatCenter into a new tab when a user tries to open it."),
 		"allow_split_screen_mode"=>array("value"=>"true","type"=>"radio","quote"=>"0","desc"=>"Allow split screen mode."),
 		
