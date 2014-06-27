@@ -5,13 +5,15 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.0.1
+Stable tag: 1.0.1.1
 
 BLOGCHAT is a live comment and chat system.
 
 == Description ==
 
-IMPORTANT UPDATE:
+UPDATE Info:
+
+Each time you update the plugin, you must also Update the FCChat Client. See the Additional Downloads Required section below for more info.
 
 Existing users, please update your host value to 'chat.fastcatsoftware.com'.
 
@@ -31,7 +33,7 @@ http://www.fastcatsoftware.com/blogchat/?p=1
 
 ADDITIONAL DOWNLOADS REQUIRED
 
-To use this plugin, you will first need to install the blogchat client in the root directory of your wordpress installation. You may download the client here: www.fastcatsoftware.com/FCChat/download/blogchat.zip
+To use this plugin, you will first need to install the blogchat client folder in the root directory of your wordpress installation. You may download the client here: www.fastcatsoftware.com/FCChat/download/blogchat.zip
 
 Place the "blogchat" folder in your wp root directory.
 
@@ -165,6 +167,10 @@ Updated the url to the shared document plugin.
 = 1.0.1 = 
 
 Added an option to remove the Online Panel from the ChatCenter. Removed the send buttons.
+
+= 1.0.1.1 = 
+
+Fixed an issue with the sidebar tabs when option show_online_panel is false. Corrected width of chatcenter panel in mobile.
 
 == Upgrade Notice ==
 
