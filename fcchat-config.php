@@ -186,11 +186,13 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			mobile:450 
 		},
 		css:{
+			loading:'font-family:arial;font-size:14px;font-weight:bold;color:lightblue',
 			container_spacing:'margin-left:auto;margin-right:auto;margin-bottom:30px;',
 			container_css:'background-color:#fff;border: 1px solid #eee;border-radius:4px;-webkit-box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);',
 			border_width:1,
 			label:'font-size:16px;font-family:arial;font-weight:bold;color:#a3b3ff;'
 		},
+		loading_txt:'Chat Loading...Please Wait...',
 		sitewide:{
 			full_page:true,
 			topic:'',
