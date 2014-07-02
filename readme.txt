@@ -5,7 +5,7 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.0.1.1
+Stable tag: 1.0.2
 
 BLOGCHAT is a live comment and chat system.
 
@@ -171,6 +171,10 @@ Added an option to remove the Online Panel from the ChatCenter. Removed the send
 = 1.0.1.1 = 
 
 Fixed an issue with the sidebar tabs when option show_online_panel is false. Corrected width of chatcenter panel in mobile.
+
+= 1.0.2 = 
+
+Version 1.0.2 introduces a horizontal layout in addition to the vertical layout.
 
 == Upgrade Notice ==
 

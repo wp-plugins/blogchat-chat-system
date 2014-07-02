@@ -3,7 +3,7 @@
 Plugin Name: BLOGCHAT Chat System
 Plugin URI: http://www.fastcatsoftware.com
 Description: Live Comments and Chat System.
-Version: 1.0.1.1
+Version: 1.0.2
 Author: Fastcat Software
 Author URI: http://www.fastcatsoftware.com
 License: GPL2
@@ -343,63 +343,81 @@ function blogchat_activate() {
 	$updated=false;
 
 
-	// look for 3.0 updates
+	// look for 1.0.2 updates
     	foreach($blogchat_options as $key => $value){
 	 	if($key=='updates'){
-			if(strpos($value , "update 3.0;") !== false){
+			if(strpos($value , "update 1.0.2;") !== false){
 				$updated=true;
 			}
 			$updates_found=true;
          	}
     	}
 	if(!$updates_found){
-		$blogchat_options['updates']='update 3.0;';
+		$blogchat_options['updates']='update 1.0.2;';
 	}else{
 		if(!$updated){
-			$blogchat_options['updates']+='update 3.0;';
+			$blogchat_options['updates'].='update 1.0.2;';
 		}
 	}
 
-	// apply 3.0 updates
+	// apply 1.0.2 updates
 	if(!$updated){
-		foreach($blogchat_options as $key => $value){
-	 		if($key=='forum_proxy'){
-				$proxy="";
-				if(strpos($value , "wordpress_proxy")){
-					$proxy="wordpress";
-				}
-				if(strpos($value , "wordpress_proxy2")){
-					$proxy="wordpress2";
-				}
-				if(strpos($value , "joomla")){
-					$proxy="joomla";
-				}
-				if(strpos($value , "phpbb3")){
-					$proxy="phpbb";
-				}
-				if(strpos($value , "smf")){
-					$proxy="smf";
-				}
-				if(strpos($value , "mybb")){
-					$proxy="mybb";
-				}
-				$blogchat_options['user_integration_bridge']=$proxy;
-			}
-         	}
-		$blogchat_options['startText']="Click here to join our chat.";
-		$blogchat_options['loginText']="Please sign in to join our chat.";
-		$blogchat_options['autoGreet']="Wellcome!! ";
-		$blogchat_options['max_video_streams']="100";
-		$blogchat_options['avatars_dir']="";
-		$blogchat_options['images_dir']="";
-		$blogchat_options['smileys_dir']="";
-		$blogchat_options['avatar_sz']="18";
 		$blogchat_options['window_height_offset']="-160";
-		$blogchat_options['chat_room_height_offset']="105";
+		$blogchat_options['chat_room_height_offset']="90";
+		$blogchat_options['chatbox']="enabled:true,
+		mode:1, /*0 - sitewide, 1 - page discussion*/
+		require_tag:false,
+		embed:{
+			tag_id:'comments',
+			before:true
+		},
+		layout:{
+			mode:2, /* 0 - horizontal, 1 -vertical, 2 - autodetect */
+			auto_detect_width_transition:570
+		},
+		width:{
+			desktop:590, /*min 580*/
+			tablet:590,
+			mobile:290
+		},
+		height:{ /*min 435*/
+			desktop:450,
+			tablet:450,
+			mobile:450 
+		},
+		css:{
+			container_spacing:'margin-left:auto;margin-right:auto;margin-bottom:30px;',
+			container_css:'background-color:#fff;border: 1px solid #eee;border-radius:4px;-webkit-box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);',
+			border_width:1,
+			label:'font-size:16px;font-family:arial;font-weight:bold;color:#a3b3ff;'
+		},
+		sitewide:{
+			full_page:true,
+			topic:'',
+			desc:'',
+			button_width:140,
+			button_text:'Chatbox',
+			title_text:'Live Comments',
+			chatroom_text:'Chat:',
+			connected_text:'Connected: ',
+			viewing_text:'Viewing'
+		},
+		page_discussion:{
+			button_width:140,
+			button_text:'This Topic',
+			title_text:'Live Comments',
+			chatroom_text:'Chat about this page:',
+			connected_text:'Viewing this page: ',
+			viewing_text:'Active',
+			use_querystring_in_url:false,
+			use_page_title:true,
+			lock_all_discussions:false
+		},
+		dialog_width:500";
 	}
     }else{
 	$blogchat_options = array();
-	$blogchat_options['updates']='update 3.0;';
+	$blogchat_options['updates']='update 1.0.2;';
 	
     }
     // Save changes

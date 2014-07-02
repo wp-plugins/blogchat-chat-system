@@ -150,7 +150,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 		"cmntwsz"=>array("value"=>"","type"=>"comment","desc"=>"CHATCENTER WINDOW SIZE"),
 		"window_width"=>array("value"=>"853","type"=>"text","quote"=>"0","sz"=>"20","desc"=>"The width of the ChatCenter window."),
 		"window_height_offset"=>array("value"=>"-160","type"=>"text","quote"=>"0","sz"=>"20","desc"=>"The height offset of the ChatCenter window relative the default height."),
-		"chat_room_height_offset"=>array("value"=>"105","type"=>"text","quote"=>"0","sz"=>"20","desc"=>"The height offset of the chat room panel relative the default height."),
+		"chat_room_height_offset"=>array("value"=>"90","type"=>"text","quote"=>"0","sz"=>"20","desc"=>"The height offset of the chat room panel relative the default height."),
 		
 		"cmntchat"=>array("value"=>"","type"=>"comment","desc"=>"CHAT ROOM PARAMS"),
 		"skip_roomlist"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"When set to true, clicking on the 'Chat Rooms' button will directly load the default chatroom (identified by default_room_index below) without displaying the room list. In addition, the full page chat will automatically load into the default room, instead of first displaying the room list."),
@@ -171,6 +171,10 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			tag_id:'comments',
 			before:true
 		},
+		layout:{
+			mode:2, /* 0 - horizontal, 1 -vertical, 2 - autodetect */
+			auto_detect_width_transition:570
+		},
 		width:{
 			desktop:590, /*min 580*/
 			tablet:590,
@@ -183,7 +187,8 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 		},
 		css:{
 			container_spacing:'margin-left:auto;margin-right:auto;margin-bottom:30px;',
-			border:'border: 4px solid #eee;border-radius:4px;',
+			container_css:'background-color:#fff;border: 1px solid #eee;border-radius:4px;-webkit-box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);',
+			border_width:1,
 			label:'font-size:16px;font-family:arial;font-weight:bold;color:#a3b3ff;'
 		},
 		sitewide:{
@@ -193,6 +198,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			button_width:140,
 			button_text:'Chatbox',
 			title_text:'Live Comments',
+			chatroom_text:'Chat:',
 			connected_text:'Connected: ',
 			viewing_text:'Viewing'
 		},
@@ -200,9 +206,10 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			button_width:140,
 			button_text:'This Topic',
 			title_text:'Live Comments',
+			chatroom_text:'Chat about this page:',
 			connected_text:'Viewing this page: ',
 			viewing_text:'Active',
-			use_querystring_in_url:true,
+			use_querystring_in_url:false,
 			use_page_title:true,
 			lock_all_discussions:false
 		},
