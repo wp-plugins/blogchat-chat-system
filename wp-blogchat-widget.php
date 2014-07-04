@@ -3,7 +3,7 @@
 Plugin Name: BLOGCHAT Chat System
 Plugin URI: http://www.fastcatsoftware.com
 Description: Live Comments and Chat System.
-Version: 1.0.2
+Version: 1.0.3
 Author: Fastcat Software
 Author URI: http://www.fastcatsoftware.com
 License: GPL2
@@ -28,7 +28,7 @@ License: GPL2
 include('fcchat-config.php');
 
 $blogchat_options;
-$blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).'blogchat/';
+$blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) ).'/';
 
 
 function get_blogchat_widget_options() {
@@ -86,7 +86,7 @@ function blogchat_add_header_js(){
 
 //widget scripts
 function blogchat_add_header_scripts(){
-        $blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).'blogchat';
+        $blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
         if (!is_admin()){
 		    wp_register_script('fc-chat-import-google.loader', $blogchat_plugin_url.'/js/import.google.loader.js');
                 wp_enqueue_script('fc-chat-import-google.loader');
@@ -112,7 +112,7 @@ function blogchat_add_header_js_after(){
         }
 }
 function blogchat_add_footer_script(){
-        $blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).'blogchat';
+        $blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 	$filename = '/path/to/foo.txt';
 	if (!is_admin()){
 		if (!file_exists(ABSPATH.'blogchat')) {
@@ -364,6 +364,31 @@ function blogchat_activate() {
 	if(!$updated){
 		$blogchat_options['window_height_offset']="-160";
 		$blogchat_options['chat_room_height_offset']="90";
+	}
+
+	$updates_found=false;
+	$updated=false;
+
+
+	// look for 1.0.3 updates
+    	foreach($blogchat_options as $key => $value){
+	 	if($key=='updates'){
+			if(strpos($value , "update 1.0.3;") !== false){
+				$updated=true;
+			}
+			$updates_found=true;
+         	}
+    	}
+	if(!$updates_found){
+		$blogchat_options['updates']='update 1.0.3;';
+	}else{
+		if(!$updated){
+			$blogchat_options['updates'].='update 1.0.3;';
+		}
+	}
+
+	// apply 1.0.3 updates
+	if(!$updated){
 		$blogchat_options['chatbox']="enabled:true,
 		mode:1, /*0 - sitewide, 1 - page discussion*/
 		require_tag:false,
@@ -380,18 +405,26 @@ function blogchat_activate() {
 			tablet:590,
 			mobile:290
 		},
-		height:{ /*min 435*/
+		height:{ /*min 390*/
 			desktop:450,
 			tablet:450,
 			mobile:450 
+		},
+		resize:{
+			enable:true,
+			increment:50,
+			min_height:400,
+			max_height:700
 		},
 		css:{
 			loading:'font-family:arial;font-size:14px;font-weight:bold;color:lightblue',
 			container_spacing:'margin-left:auto;margin-right:auto;margin-bottom:30px;',
 			container_css:'background-color:#fff;border: 1px solid #eee;border-radius:4px;-webkit-box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);',
-			border_width:1,
+			horizontal_alignment:11, 
+			padding:'0px 10px',
 			label:'font-size:16px;font-family:arial;font-weight:bold;color:#a3b3ff;'
 		},
+		label_txt:'Chat',
 		loading_txt:'Chat Loading...Please Wait...',
 		sitewide:{
 			full_page:true,
@@ -411,7 +444,7 @@ function blogchat_activate() {
 			chatroom_text:'Chat about this page:',
 			connected_text:'Viewing this page: ',
 			viewing_text:'Active',
-			use_querystring_in_url:false,
+			use_querystring_in_url:true,
 			use_page_title:true,
 			lock_all_discussions:false
 		},
@@ -419,7 +452,7 @@ function blogchat_activate() {
 	}
     }else{
 	$blogchat_options = array();
-	$blogchat_options['updates']='update 1.0.2;';
+	$blogchat_options['updates']='update 1.0.2;update 1.0.3;';
 	
     }
     // Save changes

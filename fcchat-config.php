@@ -180,18 +180,26 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			tablet:590,
 			mobile:290
 		},
-		height:{ /*min 435*/
+		height:{ /*min 390*/
 			desktop:450,
 			tablet:450,
 			mobile:450 
+		},
+		resize:{
+			enable:true,
+			increment:50,
+			min_height:400,
+			max_height:700
 		},
 		css:{
 			loading:'font-family:arial;font-size:14px;font-weight:bold;color:lightblue',
 			container_spacing:'margin-left:auto;margin-right:auto;margin-bottom:30px;',
 			container_css:'background-color:#fff;border: 1px solid #eee;border-radius:4px;-webkit-box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);',
-			border_width:1,
+			horizontal_alignment:11, 
+			padding:'0px 10px',
 			label:'font-size:16px;font-family:arial;font-weight:bold;color:#a3b3ff;'
 		},
+		label_txt:'Chat',
 		loading_txt:'Chat Loading...Please Wait...',
 		sitewide:{
 			full_page:true,
@@ -211,7 +219,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			chatroom_text:'Chat about this page:',
 			connected_text:'Viewing this page: ',
 			viewing_text:'Active',
-			use_querystring_in_url:false,
+			use_querystring_in_url:true,
 			use_page_title:true,
 			lock_all_discussions:false
 		},
@@ -268,7 +276,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 		"smiley_columns"=>array("value"=>"4","type"=>"text","quote"=>"0","sz"=>"20","desc"=>"Number of columns in the smiley dialog box."),
 		
 		"cmntsmlold"=>array("value"=>"","type"=>"comment","desc"=>"OLD SMILEY LIST: DEPRICATED"),
-		"smileys"=>array("value"=>"[['sm1.gif', ':-)','18',],['sm2.gif',':-)0','24'],['sm3.gif',':-)1','15'],['sm4.gif',':-)2','20'],['sm5.gif',':-)3','16'],['sm6.gif',':-)4','18'],['sm7.gif',':-)5','26'],['sm8.gif',':-)6','23'],['sm9.gif',':-)7','23'],['sm10.gif',':-)8','28'],['sm11.gif',':-)9','22'],['sm12.gif',':-)10','36'],['sm13.gif',':-)11','30'],['sm14.gif',':-)12','15'],['sm15.gif',':-)13','18'],['sm16.gif',':-)14','21'],['sm17.gif',':-)15','28'],['sm18.gif',':-)16','15']]","type"=>"text","quote"=>"0","sz"=>"180","desc"=>"Smiley list. Refer to product manual for instructions on how to correctly format this list."),
+		"smileys"=>array("value"=>"[['sm1.gif', ':-)','18',],['sm2.gif',':-)0','24'],['sm3.gif',':-)1','15'],['sm4.gif',':-)2','20'],['sm5.gif',':-)3','16'],['sm6.gif',':-)4','18'],['sm7.gif',':-)5','26'],['sm8.gif',':-)6','23'],['sm9.gif',':-)7','23'],['sm10.gif',':-)8','28'],['sm11.gif',':-)9','22'],['sm12.gif',':-)10','36'],['sm13.gif',':-)11','30'],['sm14.gif',':-)12','15'],['sm15.gif',':-)13','18'],['sm16.gif',':-)14','21'],['sm17.gif',':-)15','28'],['sm18.gif',':-)16','15']]","type"=>"text","quote"=>"0","sz"=>"180","desc"=>"Old Smiley list. Depricated. Refer to product manual for instructions on how to correctly format this list."),
 		
 		"cmntvid"=>array("value"=>"","type"=>"comment","desc"=>"VIDEO"),
 		"video_enabled"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Enable video."),

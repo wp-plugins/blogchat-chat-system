@@ -5,15 +5,13 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 BLOGCHAT is a live comment and chat system.
 
 == Description ==
 
 UPDATE Info:
-
-Each time you update the plugin, you must also Update the FCChat Client. See the Additional Downloads Required section below for more info.
 
 Existing users, please update your host value to 'chat.fastcatsoftware.com'.
 
@@ -29,14 +27,6 @@ DEMO
 http://www.fastcatsoftware.com/blogchat/?p=1
 
 (look for the chat box near the bottom of the page)
-
-
-ADDITIONAL DOWNLOADS REQUIRED
-
-To use this plugin, you will first need to install the blogchat client folder in the root directory of your wordpress installation. You may download the client here: www.fastcatsoftware.com/FCChat/download/blogchat.zip
-
-Place the "blogchat" folder in your wp root directory.
-
 
 
 FEATURE LIST:
@@ -106,7 +96,6 @@ When you install the BLOGCHAT Widget, you will only be installing the chat clien
 == Installation ==
 
 1. Old-school: upload the `BLOGCHAT` folder to the `/wp-content/plugins/` directory via FTP.  Hipster: Add the BLGOCHAT Widget via the WordPress Plugins menu.
-1. Download the blogchat software package from www.fastcatsoftware.com/FCChat/download/blogchat.zip. Next, unzip and upload the blogchat folder to the root directory of your wordpress installation.
 1. Activate the Plugin
 1. Navigate the the BLOGCHAT configuration page: Settings -> BLOGCHAT Settings and fill out the Chat ID and Host values you received during activation.
 1. Visit http://www.fastcatsoftware.com/chat/userguide/blogchat.asp to begin configuring and learning about the chat.
@@ -175,6 +164,10 @@ Fixed an issue with the sidebar tabs when option show_online_panel is false. Cor
 = 1.0.2 = 
 
 Version 1.0.2 introduces a horizontal layout in addition to the vertical layout.
+
+= 1.0.3 = 
+
+Made further updates to the layout, including the resizing feature. The software is now packaged with the plugin.
 
 == Upgrade Notice ==
 
