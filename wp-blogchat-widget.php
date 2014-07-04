@@ -115,12 +115,7 @@ function blogchat_add_footer_script(){
         $blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 	$filename = '/path/to/foo.txt';
 	if (!is_admin()){
-		if (!file_exists(ABSPATH.'blogchat')) {
-    			echo "<script type='text/javascript' >alert('To use the blogchat widget, download the blogchat package from www.fastcatsoftware.com/FCChat/download/blogchat.zip. Next, upload the blogchat folder to the root directory of your wordpress installation.');</script>";
-		} else {
-        	
-                	echo '<div id="fc_package"><script type="text/javascript" src="'.$blogchat_plugin_url.'/js/install.prep.js"></script><script type="text/javascript" >FCChatConfig.noshow=true;</script></div><script type="text/javascript">document.write("</div>" + (true?FCChatConfig.load_standalone:FCChatConfig.load_integrated));</script>';    
-        	}
+                echo '<div id="fc_package"><script type="text/javascript" src="'.$blogchat_plugin_url.'/js/install.prep.js"></script><script type="text/javascript" >FCChatConfig.noshow=true;</script></div><script type="text/javascript">document.write("</div>" + (true?FCChatConfig.load_standalone:FCChatConfig.load_integrated));</script>';    
 	}
 }
 
