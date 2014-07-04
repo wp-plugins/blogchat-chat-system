@@ -10,7 +10,7 @@
 
 
 /** Make sure that the WordPress bootstrap has run before continuing. */
-require( dirname(__FILE__) . '/../../wp-load.php' );
+require( dirname(__FILE__) . '/../../../../wp-load.php' );
 
 $fcchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) ).'/../';
 

@@ -13,7 +13,7 @@ define('USERNAMES_ENCODED', true);
 define('RETURN_AVATAR', true);
 
 /** Make sure that the WordPress bootstrap has run before continuing. */
-require( dirname(__FILE__) . '/../../wp-load.php' );
+require( dirname(__FILE__) . '/../../../../wp-load.php' );
  
 function str_decode_utf8($string) {
   if (mb_detect_encoding($string.'a', 'UTF-8', true) === 'UTF-8') {
