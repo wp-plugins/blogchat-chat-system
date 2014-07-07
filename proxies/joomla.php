@@ -20,11 +20,13 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 define('SECRET_KEY', 'OqO,X<rU_&=F;V}f39< bh,+&Qlr>:20=V6a^FkQ9N!<Uwp|y}]}<!5(|W|N4E>8');
 define('USERNAMES_ENCODED', true);
 define('RETURN_AVATAR', true);
+define('RETURN_DISPLAY_NAME',false);
 define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(__FILE__) .DS. '..' .DS. '..' .DS. '..' .DS. '..');
 require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
 require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 JDEBUG ? $_PROFILER->mark( 'afterLoad' ) : null;
+
 
 /**
  * CREATE THE APPLICATION
@@ -46,21 +48,62 @@ function str_decode_utf8($string) {
 return $string;
 }
 
+function correct_avatar_path($avatar){
+	$url = preg_split('/modules\/mod_blogchat\/blogchat\/proxies/i',$avatar);
+	$avatar = $url[count($url)-1];
+	if(substr($avatar, 0, 1)=="/"){
+		$url = preg_split('/modules\/mod_blogchat\/blogchat\/proxies\//i',JURI::base());
+		return $url[0] . substr($avatar, 1);
+	}else{
+		return $avatar;
+	}
+}
 
-//Pull the kunena avatar
+function testForEasysocial(){
+	if (is_file(JPATH_ADMINISTRATOR.'/components/com_easysocial/includes/foundry.php')) {
+		include JPATH_ADMINISTRATOR . '/components/com_easysocial/includes/foundry.php';
+		return true;
+	}
+	return false;
+}
+
+function testForKunena() {
+	if (class_exists('KunenaForum')) {
+		return KunenaForum::versionMajor();
+	} elseif (class_exists('Kunena')) {
+		return substr(Kunena::version(), 0, 3);
+	} elseif (is_file(JPATH_ADMINISTRATOR.'/components/com_kunena/api.php')) {
+		// Oops, Kunena 1.6/2.0 API has been disabled (please enable System - Kunena plugin)
+		return false;
+	} elseif (is_file(JPATH_ROOT.'/components/com_kunena/lib/kunena.defines.php')) {
+		return '1.5';
+	} elseif (is_file(JPATH_ROOT.'/components/com_kunena/lib/kunena.version.php')) {
+		return '1.0';
+	}
+	return false;
+}
+
+
+//Pull the avatar
 function fc_get_avatar(){
 
-	/*
-	* Test for Kunena avatar.
-	*/
+	// Test for Kunena avatar.
+	
+	$version=testForKunena();
+	if($version)return fc_get_kunena_avatar($version);
+	
+	// Test for EasySocial avatar
+	
+	if(testForEasysocial())return fc_get_easySocial_avatar();
+	
+	return null;
 
-	$version=1.6;
-	// Detects Kunena 2.0 or later version
-	if (class_exists('KunenaForum') && KunenaForum::isCompatible('2.0') && KunenaForum::installed()) {
+}
+
+function fc_get_kunena_avatar($version){
+
+	if ($version>=2) {
 		KunenaForum::setup();
-		$version=2;
-	}else if (class_exists('KunenaForum') || !class_exists('Kunena')) { // Detects Kunena 1.6 and 1.7
-		return null;
 	}
 
 	// Initialize variables
@@ -72,15 +115,8 @@ function fc_get_avatar(){
 	$avatar=$user->getAvatarURL($sizex, $sizey);
 
 	if(!empty($avatar)){
-		if($version==2){
-			$url = preg_split('/modules\/mod_blogchat\/blogchat\/proxies/i',$avatar);
-			$avatar = $url[count($url)-1];
-			if(substr($avatar, 0, 1)=="/"){
-				$url = preg_split('/modules\/mod_blogchat\/blogchat\/proxies\//i',JURI::base());
-				return $url[0] . substr($avatar, 1);
-			}else{
-				return $avatar;
-			}
+		if($version>=2){
+			correct_avatar_path($avatar);
 		}else{
 			$url = preg_split('/modules\/mod_blogchat\/blogchat\/proxies\//i',JURI::base());
 			$url = $url[0];
@@ -92,6 +128,13 @@ function fc_get_avatar(){
 	}
 }
 
+function fc_get_easySocial_avatar(){
+	// Get the current logged in user
+	$user     = Foundry::user();
+	
+	// Retrieve the avatar.
+	return correct_avatar_path($user->getAvatar());
+}
 
 if($request==0){
 	$current_user =& JFactory::getUser();
@@ -101,11 +144,8 @@ if($request==0){
 	} else {
     		// Logged in.
 		$t1 = time();
-		if(USERNAMES_ENCODED){
-			$username = htmlspecialchars_decode($current_user->username);
-		}else{
-			$username = $current_user->username;
-		}
+		$username = (RETURN_DISPLAY_NAME?$current_user->name:$current_user->username);
+		$username = (USERNAMES_ENCODED?htmlspecialchars_decode($username):$username);
 		$name_length = strlen(str_decode_utf8($username));
 		if($name_length<10){
 			$name_length = '00' . $name_length;
