@@ -454,12 +454,12 @@ function blogchat_activate() {
 	if(!$updated){
 		$chatbox=$blogchat_options['chatbox'];
 		$pos = strpos($chatbox,"hide_chatroom_info");
-		if ($pos !== false) {
+		if ($pos === false) {
 			$chatbox .= ",
 hide_chatroom_info:false";
 		}
 		$pos = strpos($chatbox,"hide_eye");
-		if ($pos !== false) {
+		if ($pos === false) {
 			$chatbox .= ",
 hide_eye:false";
 		}
