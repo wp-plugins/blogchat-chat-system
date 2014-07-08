@@ -456,12 +456,12 @@ function blogchat_activate() {
 		$pos = strpos($chatbox,"hide_chatroom_info");
 		if ($pos === false) {
 			$chatbox .= ",
-hide_chatroom_info:false";
+	hide_chatroom_info:false";
 		}
 		$pos = strpos($chatbox,"hide_eye");
 		if ($pos === false) {
 			$chatbox .= ",
-hide_eye:false";
+	hide_eye:false";
 		}
 		$blogchat_options['chatbox']=$chatbox;
 		$blogchat_options['updates'].='update 1.0.6;';
