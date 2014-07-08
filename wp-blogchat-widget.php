@@ -3,7 +3,7 @@
 Plugin Name: BLOGCHAT Chat System
 Plugin URI: http://www.fastcatsoftware.com
 Description: Live Comments and Chat System.
-Version: 1.0.5
+Version: 1.0.6
 Author: Fastcat Software
 Author URI: http://www.fastcatsoftware.com
 License: GPL2
@@ -361,7 +361,7 @@ function blogchat_activate() {
 		$blogchat_options['chat_room_height_offset']="90";
 	}
 
-	$updates_found=false;
+
 	$updated=false;
 
 
@@ -371,16 +371,8 @@ function blogchat_activate() {
 			if(strpos($value , "update 1.0.3;") !== false){
 				$updated=true;
 			}
-			$updates_found=true;
          	}
     	}
-	if(!$updates_found){
-		$blogchat_options['updates']='update 1.0.3;';
-	}else{
-		if(!$updated){
-			$blogchat_options['updates'].='update 1.0.3;';
-		}
-	}
 
 	// apply 1.0.3 updates
 	if(!$updated){
@@ -444,10 +436,39 @@ function blogchat_activate() {
 			lock_all_discussions:false
 		},
 		dialog_width:500";
+		$blogchat_options['updates'].='update 1.0.3;';
+	}
+
+	$updated=false;
+
+	// look for 1.0.6 updates
+    	foreach($blogchat_options as $key => $value){
+	 	if($key=='updates'){
+			if(strpos($value , "update 1.0.6;") !== false){
+				$updated=true;
+			}
+         	}
+    	}
+
+	// apply 1.0.6 updates
+	if(!$updated){
+		$chatbox=$blogchat_options['chatbox'];
+		$pos = strpos($chatbox,"hide_chatroom_info");
+		if ($pos !== false) {
+			$chatbox .= ",
+hide_chatroom_info:false";
+		}
+		$pos = strpos($chatbox,"hide_eye");
+		if ($pos !== false) {
+			$chatbox .= ",
+hide_eye:false";
+		}
+		$blogchat_options['chatbox']=$chatbox;
+		$blogchat_options['updates'].='update 1.0.6;';
 	}
     }else{
 	$blogchat_options = array();
-	$blogchat_options['updates']='update 1.0.2;update 1.0.3;';
+	$blogchat_options['updates']='update 1.0.2;update 1.0.3;update 1.0.6;';
 	
     }
     // Save changes

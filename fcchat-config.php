@@ -223,7 +223,9 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			use_page_title:true,
 			lock_all_discussions:false
 		},
-		dialog_width:500","type"=>"textarea","desc"=>"Settings for the chatbox. Refer to http://http://www.fastcatsoftware.com/chat/userguide/chatbox.asp"),
+		dialog_width:500,
+		hide_chatroom_info:true,
+		hide_eye:false","type"=>"textarea","desc"=>"Settings for the chatbox. Refer to http://http://www.fastcatsoftware.com/chat/userguide/chatbox.asp"),
 
 		"cmntfpu"=>array("value"=>"","type"=>"comment","desc"=>"FULL PAGE URL"),
 		"full_page_url"=>array("value"=>"","type"=>"text","quote"=>"1","sz"=>"60","desc"=>"Changes the location of the full page chat. Read the tutorial in the User Guide on changing the location of the chat page before editing."),
