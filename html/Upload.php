@@ -2,7 +2,26 @@
 
 //include the configuration file
 include('config/php_config.php');
-echo "<html><style>BODY {background-color: #fff;font-family:arial; font-size:12}</style><body><br><div style='border-bottom: #A91905 2px solid;font-size:16'><b><i><script>document.write(window.parent.fc_chat.textSetter(162))</script></i></b></div><form name='newad' method='post' enctype='multipart/form-data' action=''>";
+
+//reads the referrer
+$ref="";
+if (isset($_GET['ref']))
+{
+	//If not isset -> set with dumy value
+	$ref=$_GET['ref'];
+}
+$ref2="0";
+if($ref=="1"){
+	$ref="window.opener";
+	$ref2="1";
+}else{
+	$ref="window.parent";
+	$ref2="0";
+}
+
+echo "<html>
+<script>document.write('<style>body{'+".$ref.".FCChatConfig.styles.uploads.body+'}.container{'+".$ref.".FCChatConfig.styles.uploads.container+'}</style>')</script>
+<body><br><div class='container' style='font-size:16'><b><i><script>document.write(".$ref.".fc_chat.textSetter(162))</script></i></b></div><form name='newad' method='post' enctype='multipart/form-data' action=''>";
 //This function reads the extension of the file. It is used to determine if the file  is an image by checking the extension.
 function getExtension($str) {
          $i = strrpos($str,".");
@@ -105,7 +124,7 @@ $newname='';
 	//reads the user
 	$id=$_GET['id'];
 	if(!is_numeric($id)){
-		echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(163))</script></font></b><br>';
+		echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(163))</script></font></b><br>';
 		$errors=1;
 	}else{
  		//reads the name of the file the user submitted for uploading
@@ -118,7 +137,7 @@ $newname='';
  			//get the extension of the file in a lower case format
 			if(strpos($filename,"[[")>=1 || strpos($filename,"]]")>=1){
 				//print error message
- 				echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(164))</script></font></b><br>';
+ 				echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(164))</script></font></b><br>';
  				$errors=1;
 			}else{
   				$extension = getExtension($filename);
@@ -128,7 +147,7 @@ $newname='';
  				if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif")) 
  				{
 					//print error message
- 					echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(165))</script></font></b><br>';
+ 					echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(165))</script></font></b><br>';
  					$errors=1;
  				}
  				else
@@ -145,10 +164,10 @@ $newname='';
 					//compare the size with the maxim size we defined and print error if bigger
 					if ($size > MAX_FILE_SIZE*1024)
 					{
-						echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(166))</script></font></b><br>';
+						echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(166))</script></font></b><br>';
 						$errors=1;
 					}else if (recursive_directory_size(IMAGES_DIRECTORY,FALSE)>MAX_DIR_SIZE){
-						echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(167))</script></font></b><br>';
+						echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(167))</script></font></b><br>';
 						$errors=1;
 					}else{
 						
@@ -171,14 +190,14 @@ $newname='';
 	
 						if (!$copied) 
 						{
-							echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(169))</script></b></font><br>';
+							echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(169))</script></b></font><br>';
 							$errors=1;
 						}
 					}
 				}
 			}
 		}else{
-			echo '<br><font face=arial><b><script>document.write(window.parent.fc_chat.textSetter(170))</script></font></b><br>';
+			echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(170))</script></font></b><br>';
  				$errors=1;
 		}
 	}
@@ -187,14 +206,14 @@ $newname='';
 //If no errors registred, print the success message
  if(isset($_POST['Submit']) && !$errors) 
  {
- 	echo "<br><font color=#444444 face=arial><b>".$filename."</font><font color=#444444 face=arial> <script>document.write(window.parent.fc_chat.textSetter(171))</script></b><br><br><b><script>document.write(window.parent.fc_chat.textSetter(173))</script></b></font><font face=arial> <script>document.write(window.parent.fc_chat.textSetter(174))</script><br><br><span style='font-size:16px'><b>[[".$filename."]]</b></span> <br><br><script>document.write(window.parent.fc_chat.textSetter(175))</script>";
+ 	echo "<br><font><b>".$filename."</font><font> <script>document.write(".$ref.".fc_chat.textSetter(171))</script></b><br><br><b><script>document.write(".$ref.".fc_chat.textSetter(173))</script></b></font><font> <script>document.write(".$ref.".fc_chat.textSetter(174))</script><br><br><span style='font-size:1.25em'><b>[[".$filename."]]</b></span> <br><br><script>document.write(".$ref.".fc_chat.textSetter(175))</script>";
  }else{
-	echo '<br><font color=#444444 face=arial><b><script>document.write(window.parent.fc_chat.textSetter(172))</script></b></font><font face=arial> <script>document.write(window.parent.fc_chat.textSetter(176))</script></font><table><tr><td><input type="file" name="image"></td></tr>
-<tr><td><input name="Submit" id="submitbutton" type="submit" value=""></td></tr><tr><td><font face=arial><small><script>document.getElementById("submitbutton").value=window.parent.fc_chat.textSetter(177)</script><script>document.write(window.parent.fc_chat.textSetter(178))</script> '.MAX_FILE_SIZE.'KB)</small></font></td></tr></table> </form><br>';
+	echo '<br><font><b><script>document.write('.$ref.'.fc_chat.textSetter(172))</script></b></font><font> <script>document.write('.$ref.'.fc_chat.textSetter(176))</script></font><br><br><input type="file" name="image"><br><br>
+<input name="Submit" id="submitbutton" type="submit" value=""><br><br><font><small><script>document.getElementById("submitbutton").value='.$ref.'.fc_chat.textSetter(177)</script><script>document.write('.$ref.'.fc_chat.textSetter(178))</script> '.MAX_FILE_SIZE.'KB)</small></font></form><br>';
  }
  if(isset($_POST['Submit']) && !$errors) 
  {
-  	echo "<br><br><font color=#444444 face=arial> <script>document.write(window.parent.fc_chat.textSetter(179))</script></b></font><font face=arial>  <script>document.write(window.parent.fc_chat.textSetter(180))</script></small><br><br><a href='javascript:this.location.replace(window.parent.FCChatConfig.alt_dir+\"html/Upload.php?id=".$id."\")'><script>document.write(window.parent.fc_chat.textSetter(181))</script></a>&nbsp;<a href='javascript:window.parent.fc_chat.rem()'><script>document.write(window.parent.fc_chat.textSetter(182))</script></a><br><br>";
+  	echo "<br><br><font> <script>document.write(".$ref.".fc_chat.textSetter(179))</script></b></font><font>  <script>document.write(".$ref.".fc_chat.textSetter(180))</script></small><br><br><a href='javascript:this.location.replace(".$ref.".fc_chat.html_dir+\"Upload.php?id=".$id."\")'><script>document.write(".$ref.".fc_chat.textSetter(181))</script></a>&nbsp;<a href='javascript:".$ref.".fc_chat.rem()'><script>document.write(".$ref.".fc_chat.textSetter(182))</script></a><br><br>";
  }
  ?>
-<div style="border-bottom: #A91905 2px solid;font-size:10">Powered by <A HREF="http://www.php.net/" style="color:black">PHP</A></div></body><html>
+</body><html>

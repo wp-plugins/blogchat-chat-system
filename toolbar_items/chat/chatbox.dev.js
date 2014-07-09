@@ -389,6 +389,9 @@ jGo.fcchat_toolbar.chatbox.style={
 	        		"<a class='fc_tools_a' style='margin-left:2px' href=\"javascript:fc_chat.tgl_tools(0,"+FCChatConfig.styles.chat_window.main_panel.tools_panel.smileys.width+","+FCChatConfig.styles.chat_window.main_panel.tools_panel.smileys.height+",4)\">" +
 	    			"<img id='fc_e_sml3' src='"+_h+"emoticon_smile.png'>" +
 	    			"</a>" +
+	    			(FCChatConfig.upload_images_enabled?"<a id='fc_imgu' style='margin-left:2px;' href=\"javascript:fc_chat.launch_uploads();\">" +
+	    				"<img title='" +__(27) + "'src='" + _h + "upload_image.png'>" +
+	        			"</a>":"") +
 	    			(FCChatConfig.change_avatar?"<a id='fc_avu' style='margin-left:2px;' href=\"javascript:fc_chat.launch_avatar();\">" +
     					"<img title='" +__(29) + "'src='" + _h + "add_avatar.png'>" +
     					"</a>":"") +

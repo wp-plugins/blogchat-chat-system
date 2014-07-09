@@ -5,7 +5,7 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.0.6.0
+Stable tag: 1.0.7
 
 BLOGCHAT is a live comment and chat system.
 
@@ -180,6 +180,11 @@ Fixed an issue with the improper display of user list panel.
 = 1.0.6 = 
 
 Added hide_chatroom_info and hide_eye to the chatbox options.
+
+= 1.0.7 = 
+
+Added an option hide the eye in the 'whos connected list' and the chat room info in the bottom toolbar. Updated the image upload panel and added an image upload icon to the chatbox.
+
 
 == Upgrade Notice ==
 

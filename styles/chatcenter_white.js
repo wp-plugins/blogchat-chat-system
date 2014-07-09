@@ -386,6 +386,10 @@ FCChatConfig.styles={
 		},
 		separator:"2px solid #A91905;"
 	},
+	uploads:{
+		body:"background-color:#fff;color:#888;line-height:1.4;font-size:12px;font-family:arial;",
+		container:"border-bottom: #2E9FFF 2px solid;"
+	},
 	split_screen:{
 		background_color:"#fff"
 	}

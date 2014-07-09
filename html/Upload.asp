@@ -3,6 +3,19 @@
 option explicit 
 Response.Expires = -1
 Server.ScriptTimeout = 600
+
+Dim ref, ref2
+'reads the referrer
+ref = Request.queryString("ref")
+
+ref2="0"
+if(ref="1") then
+	ref="window.opener"
+	ref2="1"
+else
+	ref="window.parent"
+	ref2="0"
+end if
 %>
 <!-- #include file="config/asp_config.asp" -->
 <!-- #include file="freeaspupload.asp" -->
@@ -23,15 +36,17 @@ Server.ScriptTimeout = 600
 Dim avatars
 avatars=false
 
+
+
 function OutputForm()
 %>
     <form name="frmSend" method="POST" enctype="multipart/form-data" action="" onSubmit="return onSubmitForm();">
-	<br><font color= #444444><B><script>document.write(window.parent.fc_chat.textSetter(172))</script></B> </font> <script>document.write(window.parent.fc_chat.textSetter(176))</script><br><br>
+	<br><font><B><script>document.write(<%= ref %>.fc_chat.textSetter(172))</script></B> </font> <script>document.write(<%= ref %>.fc_chat.textSetter(176))</script><br><br>
     <input name="attach1" type="file" size=35><br>
     <br> 
     <input style="margin-top:4" type=submit id="submitbutton" value=""><br><br>
-<script>document.getElementById("submitbutton").value=window.parent.fc_chat.textSetter(177)</script>
-    <script>document.write(window.parent.fc_chat.textSetter(178))</script> <%=MAX_IMAGE_SIZE%>KB)
+<script>document.getElementById("submitbutton").value=<%= ref %>.fc_chat.textSetter(177)</script>
+    <script>document.write(<%= ref %>.fc_chat.textSetter(178))</script> <%=MAX_IMAGE_SIZE%>KB)
     </form>
 <%
 end function
@@ -81,13 +96,13 @@ function SaveFiles
     if (UBound(ks) <> -1) then
         if errorstring = "" then
        		for each fileKey in Upload.UploadedFiles.keys
-            		SaveFiles = "<br><font color=#444444 face=arial><b>" & Upload.UploadedFiles(fileKey).FileName & " (" & Upload.UploadedFiles(fileKey).Length & " bytes)</font><font color=#444444 face=arial> <script>document.write(window.parent.fc_chat.textSetter(171))</script></b><br><br><b><script>document.write(window.parent.fc_chat.textSetter(173))</script></b></font><font face=arial> <script>document.write(window.parent.fc_chat.textSetter(174))</script><br><br><font face=arial><span style='font-size:16px'><b> [[" & Upload.UploadedFiles(fileKey).FileName & "]]</b></span> </font><br><br><script>document.write(window.parent.fc_chat.textSetter(175))</script><br><br><font color=#444444 face=arial><b><script>document.write(window.parent.fc_chat.textSetter(179))</script></b></font><font face=arial> <script>document.write(window.parent.fc_chat.textSetter(180))</script><br></small><br><br><a href='javascript:this.location.replace(window.parent.FCChatConfig.alt_dir+""html/Upload.asp?id=" & userID & """)'><script>document.write(window.parent.fc_chat.textSetter(181))</script></a>&nbsp;<a href='javascript:window.parent.fc_chat.rem()'><script>document.write(window.parent.fc_chat.textSetter(182))</script></a><br><br>"
+            		SaveFiles = "<br><font><b>" & Upload.UploadedFiles(fileKey).FileName & " (" & Upload.UploadedFiles(fileKey).Length & " bytes)</font><font> <script>document.write(" & ref & ".fc_chat.textSetter(171))</script></b><br><br><b><script>document.write(" & ref & ".fc_chat.textSetter(173))</script></b></font><font> <script>document.write(" & ref & ".fc_chat.textSetter(174))</script><br><br><font><span style='font-size:1.25em'><b> [[" & Upload.UploadedFiles(fileKey).FileName & "]]</b></span> </font><br><br><script>document.write(" & ref & ".fc_chat.textSetter(175))</script><br><br><font><b><script>document.write(" & ref & ".fc_chat.textSetter(179))</script></b></font><font> <script>document.write(" & ref & ".fc_chat.textSetter(180))</script><br></small><br><br><a href='javascript:this.location.replace(" & ref & ".fc_chat.html_dir+""Upload.asp?id=" & userID & """)'><script>document.write(" & ref & ".fc_chat.textSetter(181))</script></a>&nbsp;<a href='javascript:" & ref & ".fc_chat.rem()'><script>document.write(" & ref & ".fc_chat.textSetter(182))</script></a><br><br>"
         	next
 	else
-		SaveFiles = "<br><b><script>document.write(window.parent.fc_chat.textSetter(" & errorstring & "))</script></b>"
+		SaveFiles = "<br><b><script>document.write(" & ref & ".fc_chat.textSetter(" & errorstring & "))</script></b>"
 	end if
     else
-        SaveFiles = "<br><b><script>document.write(window.parent.fc_chat.textSetter(168))</script></b>"
+        SaveFiles = "<br><b><script>document.write(" & ref & ".fc_chat.textSetter(168))</script></b>"
         errorstring="-1"
     end if
 end function
@@ -96,9 +111,6 @@ end function
 <HTML>
 <HEAD>
 <TITLE>Free ASP Upload</TITLE>
-<style>
-BODY {background-color: #fff;font-family:arial; font-size:12}
-</style>
 <script>
 function onSubmitForm() {
     var formDOMObj = document.frmSend;
@@ -109,12 +121,12 @@ function onSubmitForm() {
     return false;
 }
 </script>
-
+<script>document.write('<style>body{'+<%= ref %>.FCChatConfig.styles.uploads.body+'}.container{'+<%= ref %>.FCChatConfig.styles.uploads.container+'}</style>')</script>
 </HEAD>
 
 <BODY>
 <br>
-<div style="border-bottom: #A91905 2px solid;font-size:16"><b><i>Share Images</i></b></div>
+<div class='container' style="font-size:16"><b><i>Share Images</i></b></div>
 <%
 Dim diagnostics
 if Request.ServerVariables("REQUEST_METHOD") <> "POST" then
@@ -140,9 +152,6 @@ end if
 
 %>
 <br>
-<!-- Please support this free script by having a link to freeaspupload.net either in this page or somewhere else in your site. -->
-<div style="border-bottom: #A91905 2px solid;font-size:10">Powered by <A HREF="http://www.freeaspupload.net/" style="color:black">Free ASP Upload</A></div>
-
 <br><br>
 
 

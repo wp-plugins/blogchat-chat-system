@@ -118,7 +118,7 @@ Class FreeASPUpload
 		Else
 			reason="164"
 		End If
-		If fileItem.ContentType="image/gif" or fileItem.ContentType="image/pjpeg" or fileItem.ContentType="image/jpeg" or fileItem.ContentType="image/jpg" Then
+		If fileItem.ContentType="image/png" or fileItem.ContentType="image/gif" or fileItem.ContentType="image/pjpeg" or fileItem.ContentType="image/jpeg" or fileItem.ContentType="image/jpg" Then
 			checkFiles=0
 		Else
 			reason="165"

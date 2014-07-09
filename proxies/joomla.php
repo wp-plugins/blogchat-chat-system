@@ -17,10 +17,17 @@
 define( '_JEXEC', 1 );
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
-define('SECRET_KEY', 'OqO,X<rU_&=F;V}f39< bh,+&Qlr>:20=V6a^FkQ9N!<Uwp|y}]}<!5(|W|N4E>8');
-define('USERNAMES_ENCODED', true);
+
+// Config
 define('RETURN_AVATAR', true);
 define('RETURN_DISPLAY_NAME',false);
+define('USE_JOMSOCIAL',true);
+define('USE_EASYSOCIAL',true);
+define('USE_KUNENA',true);
+define('SECRET_KEY', 'OqO,X<rU_&=F;V}f39< bh,+&Qlr>:20=V6a^FkQ9N!<Uwp|y}]}<!5(|W|N4E>8');
+define('USERNAMES_ENCODED', true);
+
+
 define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(__FILE__) .DS. '..' .DS. '..' .DS. '..' .DS. '..');
 require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
@@ -59,9 +66,41 @@ function correct_avatar_path($avatar){
 	}
 }
 
+//Pull the avatar
+function fc_get_avatar(){
+
+	// Test for JomSocial avatar
+	
+	if(USE_JOMSOCIAL&&testForJomsocial())return fc_get_jomSocial_avatar();
+
+	// Test for EasySocial avatar
+	
+	if(USE_EASYSOCIAL&&testForEasysocial())return fc_get_easySocial_avatar();
+
+	// Test for Kunena avatar.
+	
+	$version=testForKunena();
+	if(USE_KUNENA&&$version)return fc_get_kunena_avatar($version);
+	
+	
+	
+	return null;
+
+}
+
+function testForJomsocial(){
+	$jspath = JPATH_BASE.DS.'components'.DS.'com_community';
+   	include $jspath.DS.'libraries'.DS.'core.php';
+	if (is_file($jspath.DS.'libraries'.DS.'core.php')) {
+		include $jspath.DS.'libraries'.DS.'core.php';
+		return true;
+	}
+	return false;
+}
+
 function testForEasysocial(){
-	if (is_file(JPATH_ADMINISTRATOR.'/components/com_easysocial/includes/foundry.php')) {
-		include JPATH_ADMINISTRATOR . '/components/com_easysocial/includes/foundry.php';
+	if (is_file(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_easysocial'.DS.'includes'.DS.'foundry.php')) {
+		include JPATH_ADMINISTRATOR.DS.'components'.DS.'com_easysocial'.DS.'includes'.DS.'foundry.php';
 		return true;
 	}
 	return false;
@@ -84,20 +123,20 @@ function testForKunena() {
 }
 
 
-//Pull the avatar
-function fc_get_avatar(){
+function fc_get_jomSocial_avatar(){
+	// Get the current logged in user
+	$user =& CFactory::getUser($userid);
+	
+	// Retrieve the avatar.
+	return correct_avatar_path($user->getThumbAvatar());
+}
 
-	// Test for Kunena avatar.
+function fc_get_easySocial_avatar(){
+	// Get the current logged in user
+	$user     = Foundry::user();
 	
-	$version=testForKunena();
-	if($version)return fc_get_kunena_avatar($version);
-	
-	// Test for EasySocial avatar
-	
-	if(testForEasysocial())return fc_get_easySocial_avatar();
-	
-	return null;
-
+	// Retrieve the avatar.
+	return correct_avatar_path($user->getAvatar());
 }
 
 function fc_get_kunena_avatar($version){
@@ -128,14 +167,6 @@ function fc_get_kunena_avatar($version){
 	}
 }
 
-function fc_get_easySocial_avatar(){
-	// Get the current logged in user
-	$user     = Foundry::user();
-	
-	// Retrieve the avatar.
-	return correct_avatar_path($user->getAvatar());
-}
-
 if($request==0){
 	$current_user =& JFactory::getUser();
 	if ($current_user->guest) {
@@ -145,6 +176,9 @@ if($request==0){
     		// Logged in.
 		$t1 = time();
 		$username = (RETURN_DISPLAY_NAME?$current_user->name:$current_user->username);
+		if($username==""){
+			$username = $current_user->username;
+		}
 		$username = (USERNAMES_ENCODED?htmlspecialchars_decode($username):$username);
 		$name_length = strlen(str_decode_utf8($username));
 		if($name_length<10){
