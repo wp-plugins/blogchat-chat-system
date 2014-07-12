@@ -344,7 +344,7 @@ FCChatConfig.styles={
 				font_css:"color:#444444",
 				link_css:"color:#528DC4",
 				url_css:"color:lightblue",
-				info_css:"color:gray",
+				user_info_css:"color:gray",
 				screen_name_css:"font-family:arial;font-size:10pt;color:green;font-weight:700;text-decoration:none;",
 				list_divider_css:"border-bottom:1px solid #dddddd;"
 			},
@@ -387,8 +387,14 @@ FCChatConfig.styles={
 		separator:"2px solid #A91905;"
 	},
 	uploads:{
-		body:"background-color:#fff;color:#888;line-height:1.4;font-size:12px;font-family:arial;",
+		body:"background-color:#fbfbff;color:#666;line-height:1.4;font-size:12px;font-family:arial;",
 		container:"border-bottom: #2E9FFF 2px solid;"
+	},
+	avatars:{
+		body:"background-color:#fbfbff;color:#666;line-height:1.4;font-size:12px;font-family:arial;",
+		link:"color:blue",
+		container:"border-bottom: #2E9FFF 2px solid;",
+		option:"background-color:#f6f6fb;border:0px solid #dddddd;padding:6px;box-shadow:0px 0px 3px 1px rgba(0,0,0,0.2)"
 	},
 	split_screen:{
 		background_color:"#fff"

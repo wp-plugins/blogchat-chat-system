@@ -52,7 +52,7 @@ function list_files($directory)
      // we open the directory
      if($handle = opendir($directory))
      {
-	$filetable="<table cellpadding=10 style='border: 1px solid #cccccc'><tr>";
+	$filetable="<table cellpadding=10 style='width:100%;border: 0px solid #cccccc'><tr>";
 	$defaultfile="";
          // and scan through the items inside
          while(($file = readdir($handle)) != false)
@@ -61,7 +61,7 @@ function list_files($directory)
              		// we build the new table
 			if(strlen($file)>3 && strpos($file,"1fc_")!=1){
 				$path = $directory.'/'.$file;
-				$filetable=$filetable."<td width=80 style='background-color:#cccccc;'><center><img src='".$path."' border=0  onclick=\"this.style.border='3px solid green';".$ref.".fc_chat.newAvatar('".$file."',2,'".$ref2."','".$flext."','".$rspln."','".$rspln2."');\" onmouseover='this.style.border=\"1px solid blue\"' onmouseout='this.style.border=\"1px solid red\"' style='border:1px solid red'></center></td>";
+				$filetable=$filetable."<td style=''><center><img src='".$path."' border=0  onclick=\"this.style.border='3px solid green';".$ref.".fc_chat.newAvatar('".$file."',2,'".$ref2."','".$flext."','".$rspln."','".$rspln2."');\" onmouseover='this.style.border=\"1px solid blue\"' onmouseout='this.style.border=\"1px solid red\"' style='border:1px solid red'></center></td>";
 				if($columns==4){
 					$filetable=$filetable."</tr><tr>";
 					$columns=0;
@@ -77,7 +77,7 @@ function list_files($directory)
 		$file=$defaultfile;
 		if(strlen($file)>3 && strpos($file,"1fc_")!=1){
 			$path = $directory.'/'.$file;
-			$filetable=$filetable."<td width=80 style='background-color:#cccccc;'><center><img src='".$path."' border=0  onclick=\"this.style.border='3px solid green';".$ref.".fc_chat.newAvatar('".$file."',2,'".$ref2."','".$flext."','".$rspln."','".$rspln2."');\" onmouseover='this.style.border=\"1px solid blue\"' onmouseout='this.style.border=\"1px solid red\"' style='border:1px solid red'></center></td>";
+			$filetable=$filetable."<td  style=''><center><img src='".$path."' border=0  onclick=\"this.style.border='3px solid green';".$ref.".fc_chat.newAvatar('".$file."',2,'".$ref2."','".$flext."','".$rspln."','".$rspln2."');\" onmouseover='this.style.border=\"1px solid blue\"' onmouseout='this.style.border=\"1px solid red\"' style='border:1px solid red'></center></td>";
 			if($columns==4){
 				$filetable=$filetable."</tr><tr>";
 				$columns=0;
@@ -88,7 +88,7 @@ function list_files($directory)
 	}
 	if($columns!=1){
 	 	for($columns;$columns<5;$columns++){
-			$filetable=$filetable."<td width=80 bgcolor=#cccccc>&nbsp;</td>";
+			$filetable=$filetable."<td >&nbsp;</td>";
 	 	}
 	}
 	 $filetable=$filetable."</tr></table>";
@@ -221,14 +221,14 @@ function useimagelink(){
 	tester.src=imagelink
 }function isGood(){".$ref.".fc_chat.newAvatar('/'+imagelink,4,'".$ref2."','".$flext."','".$rspln."','".$rspln2."')}
 function isBad(){alert('Cannot load image');return false}
-</script><style>BODY {background-color: #fff;font-family:arial; font-size:12}</style><body><br><div style='border-bottom: #A91905 0px solid;font-size:16;color:#444444'><b><i><script>document.write(".$ref.".fc_chat.textSetter(184))</script></i></b></div><div id='wait1' style='margin-top:100px;display:none'><center><script>document.write(".$ref.".fc_chat.textSetter(185))</script></center></div><div id='content1'>";
+</script><script>document.write('<style>body{'+".$ref.".FCChatConfig.styles.avatars.body+'}a{'+".$ref.".FCChatConfig.styles.avatars.link+'}.container{'+".$ref.".FCChatConfig.styles.avatars.container+'}.option{'+".$ref.".FCChatConfig.styles.avatars.option+'}</style>')</script><body><br><div class='container' style='font-size:1.25em;'><b><i><script>document.write(".$ref.".fc_chat.textSetter(184))</script></i></b></div><div id='wait1' style='margin-top:100px;display:none'><center><script>document.write(".$ref.".fc_chat.textSetter(185))</script></center></div><div id='content1'>";
 
  if(isset($_POST['Submit'])) 
  {
 	//reads the user
 	$id=$_GET['id'];
 	if(!is_numeric($id)){
-		$errorstring='<br><font color=red face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(163))</script></font></b><br><br>';
+		$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(163))</script></b><br><br>';
 		$errors=1;
 	}else{
  		//reads the name of the file the user submitted for uploading
@@ -246,7 +246,7 @@ function isBad(){alert('Cannot load image');return false}
  			if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif")) 
  			{
 				//print error message
- 				$errorstring='<br><font face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(165))</script></font></b><br><br>';
+ 				$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(165))</script></b><br><br>';
  				$errors=1;
  			}
  			else
@@ -259,10 +259,10 @@ function isBad(){alert('Cannot load image');return false}
 				//compare the size with the maxim size we defined and print error if bigger
 				if ($size > MAX_FILE_SIZE*1024)
 				{
-					$errorstring='<br><font face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(166))</script></font></b><br><br>';
+					$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(166))</script></b><br><br>';
 					$errors=1;
 				}else if (recursive_directory_size(AVATAR_DIRECTORY,FALSE)>MAX_DIR_SIZE){
-					$errorstring='<br><font face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(167))</script></b><br><br>';
+					$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(167))</script></b><br><br>';
 					$errors=1;
 				}else{
 						
@@ -284,7 +284,7 @@ function isBad(){alert('Cannot load image');return false}
 	
 					if (!$copied) 
 					{
-						$errorstring='<br><font face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(169))</script></b></font><br><br>';
+						$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(169))</script></b><br><br>';
 						$errors=1;
 					}else{
 						//Check height and width
@@ -312,17 +312,17 @@ function useimagelink(){
 }function isGood(){".$ref.".fc_chat.newAvatar('/'+imagelink,4,'".$ref2."','".$flext."','".$rspln."','".$rspln2."')}
 function isBad(){alert('Cannot load image');return false}
 
-</script><style>BODY {background-color: #fff;font-family:arial; font-size:12}</style><body onload=\"setTimeout('relayAvatar()',1000);\"><br><div style='border-bottom: #A91905 2px solid;font-size:16;color:#44444'><script>document.write(".$ref.".fc_chat.textSetter(183))</script></div><div id='wait1' style='margin-top:100px'><center><script>document.write(".$ref.".fc_chat.textSetter(185))</script></center></div><div id='content1' style='display:none'>";
+</script><script>document.write('<style>body{'+".$ref.".FCChatConfig.styles.avatars.body+'}a{'+".$ref.".FCChatConfig.styles.avatars.link+'}.container{'+".$ref.".FCChatConfig.styles.avatars.container+'}.option{'+".$ref.".FCChatConfig.styles.avatars.option+'}</style>')</script><body onload=\"setTimeout('relayAvatar()',1000);\"><br><div class='container' style='font-size:1.25em;'><script>document.write(".$ref.".fc_chat.textSetter(183))</script></div><div id='wait1' style='margin-top:100px'><center><script>document.write(".$ref.".fc_chat.textSetter(185))</script></center></div><div id='content1' style='display:none'>";
 						}else{
 							$deleted=user_avatar_delete($newname);
-							$errorstring='<br><font face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(187))</script>'.MAX_WIDTH.'<script>document.write(window.parent.fc_chat.textSetter(188))</script> '.MAX_HEIGHT.'<script>document.write('.$ref.'.fc_chat.textSetter(189))</script></font><br><br>';
+							$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(187))</script>'.MAX_WIDTH.'<script>document.write(window.parent.fc_chat.textSetter(188))</script> '.MAX_HEIGHT.'<script>document.write('.$ref.'.fc_chat.textSetter(189))</script><br><br>';
 							$errors=1;
 						}
 					}
 				}
 			}
 		}else{
-			$errorstring='<br><font face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter(170))</script></font></b><br><br>';
+			$errorstring='<br><b><script>document.write('.$ref.'.fc_chat.textSetter(170))</script></b><br><br>';
  			$errors=1;
 		}
 	}
@@ -331,7 +331,7 @@ function isBad(){alert('Cannot load image');return false}
 //If no errors registred, print the success message
  if(isset($_POST['Submit']) && !$errors) 
  {
- 	echo $startdoc."<br><b><font face=arial> <script>document.write(".$ref.".fc_chat.textSetter(186))</script></b></font><br><br><a href='javascript:this.location.replace(".$ref.".fc_chat.html_dir+\"Avatars.php?id=".$id."\")'><script>document.write(".$ref.".fc_chat.textSetter(181))</script></a>&nbsp;<a href='javascript:".$ref.".fc_chat.rem()'><script>document.write(".$ref.".fc_chat.textSetter(182))</script></a><br><br>";
+ 	echo $startdoc."<br><b><script>document.write(".$ref.".fc_chat.textSetter(186))</script></b><br><br><a href='javascript:this.location.replace(".$ref.".fc_chat.html_dir+\"Avatars.php?id=".$id."\")'><script>document.write(".$ref.".fc_chat.textSetter(181))</script></a>&nbsp;<a href='javascript:".$ref.".fc_chat.rem()'><script>document.write(".$ref.".fc_chat.textSetter(182))</script></a><br><br>";
  }else{
 	$arr = array(1 => "190", 2 => "191" ,3 => "192", 4 => "193");
 	$i=1;
@@ -340,19 +340,19 @@ function isBad(){alert('Cannot load image');return false}
   	$option3='';
 	$option4='';
 	if(USE_GRAVATAR){
-		$option1='<br><br><div style="background-color:#eeeeee;border:2px solid gray;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius:4px;padding:6px"><font color=#444444 face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b></font>&nbsp;<font face=arial> <script>document.write('.$ref.'.fc_chat.textSetter(196))</script>.</font><br><br><div style="margin-left:20px"><INPUT id="fc_imagelink" TYPE=text NAME="imagelink" VALUE="" style="width:200px"> <input type="button" name="Submit" value="" id="submitbutton2" onclick="useimagelink();"><script>document.getElementById("submitbutton2").value='.$ref.'.fc_chat.textSetter(198)</script><br><script>document.write('.$ref.'.fc_chat.textSetter(199))</script><br><br></div></div><br>';
+		$option1='<br><br><div class="option"><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b>&nbsp; <script>document.write('.$ref.'.fc_chat.textSetter(196))</script>.<br><br><div style="margin-left:20px"><INPUT id="fc_imagelink" TYPE=text NAME="imagelink" VALUE="" style="width:200px"> <input type="button" name="Submit" value="" id="submitbutton2" onclick="useimagelink();"><script>document.getElementById("submitbutton2").value='.$ref.'.fc_chat.textSetter(198)</script><br><script>document.write('.$ref.'.fc_chat.textSetter(199))</script><br><br></div></div><br>';
 		$i++;
 	}
 	if(ALLOW_UPLOADS){
-		$option2 = '<br><div style="background-color:#eeeeee;border:2px solid gray;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius:4px;padding:6px"><form name="newad" method="post" enctype="multipart/form-data" action=""><font color=#444444 face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b></font>&nbsp;<font face=arial> <script>document.write('.$ref.'.fc_chat.textSetter(194))</script>  '.MAX_HEIGHT.'<script>document.write('.$ref.'.fc_chat.textSetter(195))</script>.</font><br><br><table style="margin-left:20px"><tr><td><input type="file" name="image" ></td></tr><tr><td><input name="Submit" type="submit" value="" id="submitbutton"></td></tr><tr><td><script>document.getElementById("submitbutton").value='.$ref.'.fc_chat.textSetter(177)</script><font face=arial style="color:#269CDD"><small><script>document.write('.$ref.'.fc_chat.textSetter(178))</script>'.MAX_FILE_SIZE.'KB)</small></font></td></tr></table> </form></div>';
+		$option2 = '<br><div class="option"><form name="newad" method="post" enctype="multipart/form-data" action=""><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b>&nbsp; <script>document.write('.$ref.'.fc_chat.textSetter(194))</script>  '.MAX_HEIGHT.'<script>document.write('.$ref.'.fc_chat.textSetter(195))</script>.<br><br><table style="margin-left:20px"><tr><td><input type="file" name="image" ></td></tr><tr><td><input name="Submit" type="submit" value="" id="submitbutton"></td></tr><tr><td><script>document.getElementById("submitbutton").value='.$ref.'.fc_chat.textSetter(177)</script><small><script>document.write('.$ref.'.fc_chat.textSetter(178))</script>'.MAX_FILE_SIZE.'KB)</small></td></tr></table> </form></div>';
 		$i++;
 	}
 	if(USE_BOARD_AVATARS){
-		$option3='<br><div style="background-color:#eeeeee;border:2px solid gray;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius:4px;padding:6px">&nbsp;<font color=#444444 face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b></font><font face=arial> <script>document.write('.$ref.'.fc_chat.textSetter(200))</script>.</font><br><br><div style="margin-left:20px"><INPUT TYPE=checkbox NAME="current" VALUE="1" onclick="useCurrentAvatar();"><script>document.write('.$ref.'.fc_chat.textSetter(201))</script>.<br><br></div></div><br>';
+		$option3='<br><div class="option">&nbsp;<b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b> <script>document.write('.$ref.'.fc_chat.textSetter(200))</script>.<br><br><div style="margin-left:20px"><INPUT TYPE=checkbox NAME="current" VALUE="1" onclick="useCurrentAvatar();"><script>document.write('.$ref.'.fc_chat.textSetter(201))</script>.<br><br></div></div><br>';
 		$i++;
 	}
 	if(USE_GALLERY){
-		$option4='<br><div style="background-color:#eeeeee;border:2px solid gray;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius:4px;padding:6px"><font color=#444444 face=arial><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b></font>&nbsp;<font face=arial> <script>document.write('.$ref.'.fc_chat.textSetter(202))</script>. </font><br></div>';
+		$option4='<br><div class="option"><b><script>document.write('.$ref.'.fc_chat.textSetter('.$arr[$i].'))</script></b> <script>document.write('.$ref.'.fc_chat.textSetter(202))</script>.<br></div>';
 		$i++;
 		if(list_files(AVATAR_DIRECTORY)!=0){
 			$option4 = $option4.'<br>'.$filetable;
@@ -361,4 +361,4 @@ function isBad(){alert('Cannot load image');return false}
 	echo $startdoc.$errorstring.$option1.$option2.$option3.$option4;
  }
  ?>
-<div style="border-bottom: #A91905 2px solid;font-size:10"><br>Powered by <A HREF="http://www.php.net/" style="color:black">PHP</A></div></div></body><html>
+<div ></div></div></body><html>
