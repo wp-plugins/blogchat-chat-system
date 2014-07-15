@@ -5,7 +5,7 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.1
+Stable tag: 1.1.0
 
 BLOGCHAT is a live comment and chat system.
 
@@ -97,8 +97,9 @@ When you install the BLOGCHAT Widget, you will only be installing the chat clien
 
 1. Old-school: upload the `BLOGCHAT` folder to the `/wp-content/plugins/` directory via FTP.  Hipster: Add the BLGOCHAT Widget via the WordPress Plugins menu.
 1. Activate the Plugin
+1. Visit http://www.fastcatsoftware.com/chat/userguide/blogchat_for_wordpress.asp to finish the installation.
+1. Visit http://www.fastcatsoftware.com/chat/activation.aspx to activate your chat account.
 1. Navigate the the BLOGCHAT configuration page: Settings -> BLOGCHAT Settings and fill out the Chat ID and Host values you received during activation.
-1. Visit http://www.fastcatsoftware.com/chat/userguide/blogchat.asp to begin configuring and learning about the chat.
 1. Rate the plugin and verify that it works at wordpress.org.
 1. Leave a comment regarding bugs, feature request, cocktail recipes at http://www.fastcatsoftware.com
 
