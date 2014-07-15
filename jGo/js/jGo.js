@@ -601,7 +601,7 @@ jGo.config = {
 			/* Overrides API */
 			getObj:function(a,b,d){var c=window;for(var i=0;i<b.length-d;i++){c=c[b[i]]}return c},
 			setOption:function(a,d){try{var b=a.split(".");var c= jGo.util.getObj(a,b,1);c[b[b.length-1]]=d}catch(e){}},
-			mergeOption:function(a,d){try{var b=a.split(".");var c = jGo.util.getObj(a,b,1);c[b[b.length-1]]+=d}catch(e){alert(e)}},
+			mergeOption:function(a,d){try{var b=a.split(".");var c = jGo.util.getObj(a,b,1);c[b[b.length-1]]+=d}catch(e){}},
 			mergeBlock:function(a,d){try{var b=a.split(".");var c=jGo.util.getObj(a,b,0);jGo.$.extend(true,c,d)}catch(e){}},
 			getCSSProp:function(a,d,g){try{var b=a.split(".");var c;c=jGo.util.getObj(a,b,1);var f=((c[b[b.length-1]].split(d+":"))[1].split(";"))[0];return (g?jGo.util.eN(f):f)}catch(e){}},
 

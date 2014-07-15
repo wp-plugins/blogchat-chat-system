@@ -3,7 +3,7 @@
 Plugin Name: BLOGCHAT Chat System
 Plugin URI: http://www.fastcatsoftware.com
 Description: Live Comments and Chat System.
-Version: 1.0.8
+Version: 1.0.9
 Author: Fastcat Software
 Author URI: http://www.fastcatsoftware.com
 License: GPL2
@@ -74,8 +74,13 @@ function blogchat_add_header_js(){
 				}
 			}
 		}
-		echo '})();</script>';
-
+		//Global Config
+		if ($blogchat_options['template_overrides']['value']!=""){
+			echo 'function getObj(a,b,d){var c=window;for(var i=0;i<b.length-d;i++){c=c[b[i]]}return c};function setOption(a,d){try{var b=a.split(".");var c= getObj(a,b,1);c[b[b.length-1]]=d}catch(e){}};function mergeOption(a,d){try{var b=a.split(".");var c = getObj(a,b,1);c[b[b.length-1]]+=d}catch(e){}};function mergeBlock(a,d){try{var b=a.split(".");var c=getObj(a,b,0);jGo.$.extend(true,c,d)}catch(e){}};';
+			echo 'function getCSSProp(a,d,g){try{var b=a.split(".");var c;c=getObj(a,b,1);var f=((c[b[b.length-1]].split(d+":"))[1].split(";"))[0];return (g?jGo.util.eN(f):f)}catch(e){}};';
+			echo 'a.global = {template_overrides:function(){'.$blogchat_options['template_overrides']['value'].'}}';
+		}
+		echo '}())</script>';
         }
 }
 
@@ -100,29 +105,17 @@ function blogchat_add_header_scripts(){
         }
 }
 
-//widget header js
-function blogchat_add_header_js_after(){
-	global $blogchat_options,$blogchat_plugin_url;
-        if (!is_admin()&&$blogchat_options['template_overrides']['value']!=""){
-		echo '<script type="text/javascript">(function(){function getObj(a,b,d){var c=window;for(var i=0;i<b.length-d;i++){c=c[b[i]]}return c};function setOption(a,d){try{var b=a.split(".");var c= getObj(a,b,1);c[b[b.length-1]]=d}catch(e){}};function mergeOption(a,d){try{var b=a.split(".");var c = getObj(a,b,1);c[b[b.length-1]]+=d}catch(e){}};function mergeBlock(a,d){try{var b=a.split(".");var c=getObj(a,b,0);jGo.$.extend(true,c,d)}catch(e){}};';
-		echo 'function getCSSProp(a,d,g){try{var b=a.split(".");var c;c=getObj(a,b,1);var f=((c[b[b.length-1]].split(d+":"))[1].split(";"))[0];return (g?jGo.util.eN(f):f)}catch(e){}};';
-		echo $blogchat_options['template_overrides']['value'];
-		echo '})();</script>';
 
-        }
-}
 function blogchat_add_footer_script(){
         $blogchat_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
-	$filename = '/path/to/foo.txt';
-	if (!is_admin()){
+		if (!is_admin()){
                 echo '<div id="fc_package"><script type="text/javascript" src="'.$blogchat_plugin_url.'/js/install.prep.js"></script><script type="text/javascript" >FCChatConfig.noshow=true;</script></div><script type="text/javascript">document.write("</div>" + (true?FCChatConfig.load_standalone:FCChatConfig.load_integrated));</script>';    
-	}
+		}
 }
 
 // Inserts scripts into page
 add_action( 'wp_print_scripts', 'blogchat_add_header_js' );
 add_action('wp_enqueue_scripts', 'blogchat_add_header_scripts');
-add_action('wp_head','blogchat_add_header_js_after');
 add_action('wp_footer','blogchat_add_footer_script');
 
 //the widget
@@ -466,9 +459,44 @@ function blogchat_activate() {
 		$blogchat_options['chatbox']=$chatbox;
 		$blogchat_options['updates'].='update 1.0.6;';
 	}
+
+	// look for 1.0.9 updates
+	$updated=false;
+	$quickstyling='';
+    	foreach($blogchat_options as $key => $value){
+	 	if($key=='updates'){
+			if(strpos($value , "update 1.0.9;") !== false){
+				$updated=true;
+			}
+         	}
+		if($key=='quickstyling'){
+			$quickstyling=$value;
+         	}
+    	}
+
+	// apply updates
+	if(!$updated){
+		if($quickstyling!=''){
+			$quickstyling = str_replace('border_css','background_css',$quickstyling);
+			$pos = strpos($quickstyling,'application_window');
+			if($pos !== false){
+				$pos = strpos($quickstyling,'frame_color',$pos);
+			}
+			if ($pos !== false) {
+				$pos = strpos($quickstyling,'title_css',$pos);
+			}
+			if ($pos !== false) {
+				$quickstyling = substr($quickstyling,0,$pos)."background_color:'',
+	panel_color:'',
+	".substr($quickstyling,$pos);
+			}
+			$blogchat_options['quickstyling']=$quickstyling;
+		}
+		$blogchat_options['updates'].='update 1.0.9;';
+	}
     }else{
 	$blogchat_options = array();
-	$blogchat_options['updates']='update 1.0.2;update 1.0.3;update 1.0.6;';
+	$blogchat_options['updates']='update 1.0.2;update 1.0.3;update 1.0.6;update 1.0.9;';
 	
     }
     // Save changes

@@ -190,42 +190,6 @@ jGo.fcchat_toolbar.style={
 			}
 		}
 	};
-
-function applyQuickStyles(){
-	var d = FCChatConfig.quickstyling;
-	if(window["fcchat_domain"]&&d[window["fcchat_domain"]]){
-		d = d[window["fcchat_domain"]];
-	}else{
-		d = d.alldomains;
-	}
-	var c = d.toolbar;
-	var s = "jGo.fcchat_toolbar.style";
-	var x = jGo.util.mergeOption;
-	var w = c.width_prop_offsets.split(':');
-	
-	w[0]-=0;
-	w[1]-=0;
-	w[2]-=0;
-	x(s+".css",c.background_css);
-	x(s+".text",c.base_font_css);
-	x(s+".divider_css",c.divider_css);
-	x(s+".icon_tray.minimize_icon.css",c.base_font_css);
-	x(s+".icon_tray.hide_icon.css",c.base_font_css);
-	x(s+".icon_tray.minimize_icon.top",c.text_top_offset);
-	x(s+".icon_tray.hide_icon.top",c.text_top_offset);
-	x(s+".icon_tray.restore.width",w[2]);
-	
-	c = d.dialog;
-
-	s = "jGo.fcchat_toolbar.style.dialog_box";
-	x(s+".css",c.border_css);
-	x(s+".title_box_css",c.title_background_css);
-	x(s+".text.title_css",c.title_css);
-	x(s+".text.link_css",c.link_css);
-};
-
-if(FCChatConfig.blog&&jGo.mobile&&jGo.blogdim.width<395)jGo.util.mergeOption("jGo.fcchat_toolbar.style.text","font-size:100%;");
-		
-applyQuickStyles();	
-
+/*Apply style overrides*/
+FCChatConfig.overrides.toolbar_overrides();
 }());

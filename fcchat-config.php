@@ -85,13 +85,15 @@ function fcchat_widget_options() {
 		info_css:''
 	},
 	dialog:{
-		border_css:'',
+		background_css:'',
 		title_background_css:'',
 		title_css:'',
 		link_css:''
 	},
 	application_window:{
 		frame_color:'',
+		background_color:'',
+		panel_color:'',
 		title_css:''
 	},
 	full_page_css_obj:{

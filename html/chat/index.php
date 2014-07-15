@@ -46,13 +46,7 @@ FCChatConfig.small_device_toolbar_items=["friendscenter"];
 
 </script>
 <script type="text/javascript" src="<?php echo $FCCHAT_BASE_URL;?>js/import.includes.js"></script>
-<script type="text/javascript">
 
-//Proxy template adjustments
-if(FCChatConfig['proxy_type']){
-document.write("<script type='text/javascript' src='<?php echo $FCCHAT_BASE_URL;?>proxies/" + FCChatConfig['proxy_type'] + "_template_proxy.php'></" + "script>");
-}
-</script>
 <script type="text/javascript">
 <!--
 function getQuerystring(key, default_){
