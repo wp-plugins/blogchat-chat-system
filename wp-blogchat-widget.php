@@ -3,7 +3,7 @@
 Plugin Name: BLOGCHAT Chat System
 Plugin URI: http://www.fastcatsoftware.com
 Description: Live Comments and Chat System.
-Version: 1.0.9.0
+Version: 1.0.9.1
 Author: Fastcat Software
 Author URI: http://www.fastcatsoftware.com
 License: GPL2
@@ -513,6 +513,6 @@ function blogchat_update() {
     update_option('blogchat_widget', $blogchat_options);
 }
 add_action('init','blogchat_update',1);
-//register_activation_hook( __FILE__, 'blogchat_activate' );
+register_activation_hook( __FILE__, 'blogchat_update' );
 
 ?>
