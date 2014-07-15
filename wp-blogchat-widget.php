@@ -326,18 +326,16 @@ function blogchat_add_pages() {
 }
 
 function blogchat_update() {
+    $current_revision=1;
     if(($blogchat_options = get_option('blogchat_widget')) !== FALSE){
-	$current_revision=1;
 	$revision=0;
 	if(isset($blogchat_options['revision'])){
 		$revision = $blogchat_options['revision'];
 	}
 	if($revision>=$current_revision){
 		return false;
-	}else{
-		$blogchat_options['revision']=$current_revision;
-		update_option('blogchat_widget', $blogchat_options);
 	}
+
 	$updates_found=false;
 	$updated=false;
 
@@ -511,6 +509,7 @@ function blogchat_update() {
 	
     }
     // Save changes
+    $blogchat_options['revision']=$current_revision;
     update_option('blogchat_widget', $blogchat_options);
 }
 add_action('init','blogchat_update',1);
