@@ -198,7 +198,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 			container_spacing:'margin-left:auto;margin-right:auto;margin-bottom:30px;',
 			container_css:'background-color:#fff;border: 1px solid #eee;border-radius:4px;-webkit-box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);box-shadow:0px 0px 4px 2px rgba(0,0,0,0.2);',
 			horizontal_alignment:11, 
-			padding:'0px 10px',
+			padding:'10px 10px',
 			label:'font-size:16px;font-family:arial;font-weight:bold;color:#a3b3ff;'
 		},
 		label_txt:'Chat',
