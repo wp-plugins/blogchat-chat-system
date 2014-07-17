@@ -3,7 +3,7 @@
 Plugin Name: BLOGCHAT Chat System
 Plugin URI: http://www.fastcatsoftware.com
 Description: Live Comments and Chat System.
-Version: 1.1.0
+Version: 1.1.0.0
 Author: Fastcat Software
 Author URI: http://www.fastcatsoftware.com
 License: GPL2
@@ -225,7 +225,7 @@ function blogchat_settings_page() {
         // Put an settings updated message on the screen
 
 ?>
-<div class="updated"><p><strong><?php _e('Settings Saved.', 'menu-test' ); ?></strong></p></div>
+<div class="updated"><p><strong><?php _e('Settings Saved.', 'menu--blogchat' ); ?></strong></p></div>
 <?php
 
     	}
@@ -253,7 +253,7 @@ function blogchat_settings_page() {
         // Put an settings updated message on the screen
 
 ?>
-<div class="updated"><p><strong><?php _e('Settings Reset.', 'menu-test' ); ?></strong></p></div>
+<div class="updated"><p><strong><?php _e('Settings Reset.', 'menu--blogchat' ); ?></strong></p></div>
 <?php
 
     	}
@@ -263,7 +263,7 @@ function blogchat_settings_page() {
 
     // header
 
-    echo "<h2>" . __( 'BLOGCHAT Plugin Settings', 'menu-test' ) . "</h2>";
+    echo "<h2>" . __( 'BLOGCHAT Plugin Settings', 'menu--blogchat' ) . "</h2>";
 
     // settings form
     
@@ -273,29 +273,29 @@ function blogchat_settings_page() {
 <input type="hidden" id="blogchat-settings-submit" name="blogchat-settings-submit" value="1" />
 
 <?php
-_e('This page is an HTML implemention of the BLOGCHAT configuration file (blogchat/config/config.js). For a complete description of the functions and usage of the variables below, refer to the <a href="http://www.fastcatsoftware.com/chat/Manual3.html" TARGET="_blank" >FCChat Manual</a>. Some additional tutorials are found in the <a href="http://www.fastcatsoftware.com/chat/userguide/index.html" TARGET="_blank" >User Guide</a>. You can restore all the settings to their default values by pressing the reset button below.', 'menu-test' );
+_e('This page is an HTML implemention of the BLOGCHAT configuration file (blogchat/config/config.js). For a complete description of the functions and usage of the variables below, refer to the <a href="http://www.fastcatsoftware.com/chat/Manual3.html" TARGET="_blank" >FCChat Manual</a>. Some additional tutorials are found in the <a href="http://www.fastcatsoftware.com/chat/userguide/index.html" TARGET="_blank" >User Guide</a>. You can restore all the settings to their default values by pressing the reset button below.', 'menu--blogchat' );
 echo '<br /><br />';
 foreach($blogchat_options as $key => $value){
 	if($blogchat_options[$key]['type']=='comment'){
 		echo '<br /><br /><div style="color:blue;font-weight:bold"><big>';
-		_e($blogchat_options[$key]['desc'], 'menu-test' ); 
+		_e($blogchat_options[$key]['desc'], 'menu--blogchat' ); 
 		echo '</big></div><br>';
 	}else if($blogchat_options[$key]['type']=='text'){
-		echo '<p>' . _e($blogchat_options[$key]['desc'], 'menu-test' ); 
+		echo '<p>' . _e($blogchat_options[$key]['desc'], 'menu--blogchat' ); 
 		echo '<b>' . $key . '</b>&nbsp; <input type="text" name="blogchat-' . $key . '" value="' . $blogchat_options[$key]['value'] . '" size="' . $blogchat_options[$key]['sz'] . '">';
 		echo '</p><hr />';
 	}else if($blogchat_options[$key]['type']=='radio'){
-		echo '<p><b>' . $key . '</b>&nbsp; ' . _e($blogchat_options[$key]['desc'], 'menu-test' ); 
+		echo '<p><b>' . $key . '</b>&nbsp; ' . _e($blogchat_options[$key]['desc'], 'menu--blogchat' ); 
 		echo '<input type="radio"  name="blogchat-' . $key . '" value="true" ' . ($blogchat_options[$key]['value'] == "true"? 'checked="checked"':'') . ' /> Yes&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"  name="blogchat-' . $key . '" value="false" ' . ($blogchat_options[$key]['value'] == "false"? 'checked="checked"':'') . ' /> no ';
 		echo '</p><hr />';
 	}else if($blogchat_options[$key]['type']=='textarea'){
-		echo '<p>' . _e($blogchat_options[$key]['desc'], 'menu-test' ); 
+		echo '<p>' . _e($blogchat_options[$key]['desc'], 'menu--blogchat' ); 
 		echo '&nbsp;&nbsp;<b>' . $key . '</b><br>&nbsp; <textarea style="font-size:16px;font-family:arial;width:100%;height:300px" name="blogchat-' . $key . '">' . $blogchat_options[$key]['value'] . '</textarea>';
 		echo '</p><hr />';
 	}else if($blogchat_options[$key]['type']=='hidden'){
 		
 	}else{
-		echo '<p><b>' . $key . '</b>&nbsp; ' . _e($blogchat_options[$key]['desc'], 'menu-test' ); 
+		echo '<p><b>' . $key . '</b>&nbsp; ' . _e($blogchat_options[$key]['desc'], 'menu--blogchat' ); 
 		foreach($blogchat_options[$key]['ops'] as $op => $val){
 			echo '<input type="radio"  name="blogchat-' . $key . '" value="' . $blogchat_options[$key]['ops'][$op]['value'] . '" ' . ($blogchat_options[$key]['value'] == $blogchat_options[$key]['ops'][$op]['value']? 'checked="checked"':'') . ' /> ' . $blogchat_options[$key]['ops'][$op]['desc'] . '&nbsp;&nbsp;&nbsp;';
 		}
@@ -322,7 +322,7 @@ add_action('admin_menu', 'blogchat_add_pages');
 // action function for above hook
 function blogchat_add_pages() {
     // Add a new submenu under Settings:
-    add_options_page(__('BLOGCHAT Settings','menu-test'), __('BLOGCHAT Settings','menu-test'), 'manage_options', 'testsettings', 'blogchat_settings_page');
+    add_options_page(__('BLOGCHAT Settings','menu--blogchat'), __('BLOGCHAT Settings','menu--blogchat'), 'manage_options', 'blogchatsettings', 'blogchat_settings_page');
 }
 
 function blogchat_update() {
@@ -514,5 +514,15 @@ function blogchat_update() {
 }
 add_action('init','blogchat_update',1);
 register_activation_hook( __FILE__, 'blogchat_update' );
+
+// Add settings link on plugin page
+function blogchat_settings_link($links) { 
+  $settings_link = '<a href="options-general.php?page=blogchatsettings">Settings</a>'; 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+ 
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'blogchat_settings_link' );
 
 ?>

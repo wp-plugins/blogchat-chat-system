@@ -5,7 +5,7 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.1.0
+Stable tag: 1.1.0.0
 
 BLOGCHAT is a live comment and chat system.
 
