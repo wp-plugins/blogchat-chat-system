@@ -39,7 +39,7 @@ if(mobile){
 	if(FCChatConfig.chatcenter_layout==0){
 		fc_add_chatcenter_button=true;
 	}
-	FCChatConfig.chatcenter_layout=1;
+	//FCChatConfig.chatcenter_layout=1;
 }
 
 //toolbar items

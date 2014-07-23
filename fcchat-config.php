@@ -125,6 +125,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 		
 		"use_mobile_banner"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Enable the resizable toolbar mode customized for small screen devices."),
 		"mobile_banner_position"=>array("value"=>"topleft","type"=>"radio2","ops"=>array(array("value"=>"bottomleft","desc"=>"Bottom left"),array("value"=>"topleft","desc"=>"Top left")), "quote"=>"1","desc"=>""),
+		"mobile_banner_scale_factor"=>array("value"=>"1","type"=>"text","quote"=>"0","sz"=>"20","desc"=>"Resize the banner."),
 		"mobile_banner_exclude"=>array("value"=>"/none/i","type"=>"text","quote"=>"0","sz"=>"100","desc"=>"A regex containing a list of devices to exclude from this mode. ie. /iphone|ipad|ipod/i"),
 		
 		"use_fixed_toolbar"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Enable the fixed toolbar mode for mobile devices."),

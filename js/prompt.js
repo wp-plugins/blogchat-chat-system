@@ -16,7 +16,7 @@ jGo.fcchat_toolbar.prompt.style={
 			css:jGo.fcchat_toolbar.style.css+";margin:12px;",
 			triangle_color:jGo.util.extractFromCSSString("triangle-color",jGo.fcchat_toolbar.style.css),
 			text:jGo.fcchat_toolbar.style.text+";font-size:12px",
-			link_text:FCChatConfig.styles.widget.toolbar_item.text.link_css+";font-size:12px",
+			link_text:jGo.fcchat_toolbar.style.toolbar_item.text.link_css+";font-size:12px",
 			hide_icon:{
 				css:jGo.fcchat_toolbar.style.icon_tray.hide_icon.css+";font-size:14px;"
 			}

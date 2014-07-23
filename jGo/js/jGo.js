@@ -259,7 +259,8 @@ jGo.config = {
 			dblclick :true,
 			mouseup :true,
 			mousedown :true,
-			mousemove :true
+			mousemove :true,
+			touchstart:true
 		};
 
 		jGo.UI = {
@@ -280,6 +281,8 @@ jGo.config = {
 			onmouseup : function(e) {
 			},
 			onmousemove : function(e) {
+			},
+			ontouchstart : function(e) {
 			},
 
 			// Aplication Interface
@@ -450,6 +453,7 @@ jGo.config = {
 				doc.eventHandler('mousedown', this, 'onmousedown');
 				doc.eventHandler('mouseup', this, 'onmouseup');
 				doc.eventHandler('mousemove', this, 'onmousemove');
+				doc.eventHandler('touchstart', this, 'ontouchstart');
 			}
 		}
 	})();

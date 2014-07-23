@@ -118,7 +118,7 @@ FCChatConfig.overrides={
 			c = d.alldomains;
 		}
 		c = c.toolbar;
-		s = "FCChatConfig.styles.widget.toolbar_item";
+		s = "jGo.fcchat_toolbar.style.toolbar_item";
 		var w = c.width_prop_offsets.split(':');
 		
 		w[0]-=0;

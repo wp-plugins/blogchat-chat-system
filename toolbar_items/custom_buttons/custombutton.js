@@ -17,7 +17,7 @@ jGo.fcchat_toolbar.custombutton = function(id,s){
     		icon_css:"",
     		text_css:"",
     		padding_left:10,
-    		padding_top:FCChatConfig.styles.widget.toolbar_item.chatcenter_layout.info_box.padding_top
+    		padding_top:jGo.fcchat_toolbar.style.toolbar_item.chatcenter_layout.info_box.padding_top
     	},
     	dialog_box:{
     		css:jGo.fcchat_toolbar.style.dialog_box.css,

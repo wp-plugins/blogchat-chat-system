@@ -49,7 +49,10 @@ TMp.create = function(id, p){
 	this.frame=$(document.createElement('div')).addClass(outerClass).attr('id', 'jGo_defaultmenuF' + id).css({position:(this.fixed?'fixed':'absolute'),display:'none','z-index':jGo.config.max_z_index}).css(s.css).html(content);
 	this.parent.append(this.frame);
 	this.target.onEvent('mousedown', this, 'onMouseDown', '');
+	this.target.onEvent('touchstart', this, 'onMouseDown', '');
 	this.frame.onEvent('mousedown', this, 'onMouseDown', '');
+	this.frame.onEvent('touchstart', this, 'onMouseDown', '');
+	
 	this.id=id;
 };
 
@@ -61,7 +64,7 @@ TMp.onMouseDown = function(e){
 TMp.mouseOff = function(e){
 	var root = (document.body.scrollHeight>=document.documentElement.scrollHeight)?document.body:document.documentElement;
 	var scroll = (root.scrollLeft)?root.scrollLeft:0;
-	if((scroll+root.clientWidth)>e.pageX||root.clientWidth==0){
+	if(!e.pageX||(scroll+root.clientWidth)>e.pageX||root.clientWidth==0){
 		if(!this.noHide)this.hide();
 		this.noHide=false;
 	}
@@ -113,6 +116,7 @@ TMp.position = function(){
 
 TMp.show = function() {
    	jGo.onEvent('mousedown','defaultmenu'+this.id,this,'mouseOff');
+   	jGo.onEvent('touchstart','defaultmenu'+this.id,this,'mouseOff');
 	this.position();
 	this.frame.css("display","block");
    	this.isOpen=true;
@@ -120,6 +124,7 @@ TMp.show = function() {
 };
 TMp.hide = function() {
     jGo.UI.removeHandler('mousedown','defaultmenu'+this.id);
+    jGo.UI.removeHandler('touchstart','defaultmenu'+this.id);
     this.frame.css("display","none");
     this.isOpen=false;
 };
@@ -127,7 +132,9 @@ TMp.close = function() {
     this.frame.empty();
 	this.frame.remove();
 	this.target.removeEventHandler('mousedown');
+	this.target.removeEventHandler('touchstart');
     jGo.UI.removeHandler('mousedown','defaultmenu'+this.id);
+    jGo.UI.removeHandler('touchstart','defaultmenu'+this.id);
 	this.isOpen=false;
     return true;
 };
@@ -167,7 +174,7 @@ DMC.mouseOn = function(e){
 DMC.mouseDown = function(e){
 	var root = (document.body.scrollHeight>=document.documentElement.scrollHeight)?document.body:document.documentElement;
 	var scroll = (root.scrollLeft)?root.scrollLeft:0;
-	if((scroll+root.clientWidth)>e.pageX||root.clientWidth==0){
+	if(!e.pageX||(scroll+root.clientWidth)>e.pageX||root.clientWidth==0){
 		if(!this.no_hide&&this.is_open())this.toggle(true);
 	}
 	this.no_hide=false;
@@ -182,14 +189,20 @@ DMC.enableControl = function(){
 	this.target.onEvent('mousedown', this, 'mouseOn', '');
 	this.menu.onEvent('mousedown', this, 'mouseOn', '');
 	jGo.onEvent('mousedown','menucontroller'+this.id,this,'mouseDown');
+	this.target.onEvent('touchstart', this, 'mouseOn', '');
+	this.menu.onEvent('touchstart', this, 'mouseOn', '');
+	jGo.onEvent('touchstart','menucontroller'+this.id,this,'mouseDown');
 };
 DMC.disableControl = function() {
 	this.target.removeEventHandler('mousedown');
 	this.menu.removeEventHandler('mousedown');
     jGo.UI.removeHandler('mousedown','menucontroller'+this.id);
+    this.target.removeEventHandler('touchstart');
+	this.menu.removeEventHandler('touchstart');
+    jGo.UI.removeHandler('touchstart','menucontroller'+this.id);
 };
 })();
 
 //Class Initialization
 jGo.UI.registerWidgetClass(jGo.DefaultMenu,'DefaultMenu','complex.menus');
-jGo.scripts.onLoad('jGo.DefaultMenu.min.js');
+jGo.scripts.onLoad('jGo.DefaultMenu.js');

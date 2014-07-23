@@ -58,6 +58,8 @@ TMp.create = function(id, p){
 	this.parent.append(this.frame);
 	this.target.eventHandler('mousedown', this, 'onMouseDown', '');
 	this.frame.eventHandler('mousedown', this, 'onMouseDown', '');
+	this.target.eventHandler('touchstart', this, 'onMouseDown', '');
+	this.frame.eventHandler('touchstart', this, 'onMouseDown', '');
 	this.id=id;
 	this.show();
 };
@@ -73,7 +75,7 @@ TMp.onMouseDown = function(e){
 TMp.mouseOff = function(e){
 	var root = (document.body.scrollHeight>=document.documentElement.scrollHeight)?document.body:document.documentElement;
 	var scroll = (root.scrollLeft)?root.scrollLeft:0;
-	if((scroll+root.clientWidth)>e.pageX||root.clientWidth==0){
+	if(!e.pageX||(scroll+root.clientWidth)>e.pageX||root.clientWidth==0){
 		if(!this.noHide)this.hide();
 		this.noHide=false;
 	}
@@ -83,6 +85,7 @@ TMp.show = function() {
  	t = this.target,
 	p = this.parent;
    	jGo.UI.EventHandler('mousedown','transmenu'+this.id,jGo.UI,this,'mouseOff');
+   	jGo.UI.EventHandler('touchstart','transmenu'+this.id,jGo.UI,this,'mouseOff');
 	$([this.frame[0],this.ghost[0]]).css({top:s.top || (t.offset().top+s.offsetTop-(p[0]===document.body?'0':jGo.util.eN(p.offset().top))),left:s.left || (t.offset().left+t.width()+s.offsetLeft-(p[0]===document.body?'0':jGo.util.eN(p.offset().left)))});
    	this.ghost.css("display","block");
    	this.frame.css("display","block");
@@ -91,17 +94,22 @@ TMp.show = function() {
 };
 TMp.hide = function() {
     	jGo.UI.removeHandler('mousedown','transmenu'+this.id);
+    	jGo.UI.removeHandler('touchstart','transmenu'+this.id);
     	this.frame.css("display","none");
     	this.ghost.css("display","none");
 	this.isOpen=false;
 };
 TMp.close = function() {
-    	this.ghost.empty();
-    	this.frame.empty();
+    this.ghost.empty();
+    this.frame.empty();
 	this.ghost.remove();
 	this.frame.remove();
 	this.target.removeEventHandler('mousedown');
-    	jGo.UI.removeHandler('mousedown','transmenu'+this.id);
+	this.target.removeEventHandler('touchstart');
+	this.frame.removeEventHandler('mousedown');
+	this.frame.removeEventHandler('touchstart');
+    jGo.UI.removeHandler('mousedown','transmenu'+this.id);
+    jGo.UI.removeHandler('touchsart','transmenu'+this.id);
 	this.isOpen=false;
     	return true;
 };

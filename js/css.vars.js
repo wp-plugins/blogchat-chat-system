@@ -5,8 +5,8 @@
 	var fc_tb_nm = fc_tb.new_messages_box;
 	var fc_tb_f = fc_tb.friends_box;
 	var fc_fr_tb = jGo.fcchat_toolbar.style;
-	var fc_tb_pl = fc_tb.toolbar_item;
-	var fc_pl_btn = fc_tb.toolbar_item.buttons;
+	var fc_tb_pl = fc_fr_tb.toolbar_item;
+	var fc_pl_btn = fc_fr_tb.toolbar_item.buttons;
 	var fc_promo  = (jGo.fcchat_toolbar.prompt?jGo.fcchat_toolbar.prompt.style.dialog_box.bubble.triangle_color:'');
 	var fc_cw_mp_cp = FCChatConfig.styles.chat_window.main_panel.chat_panels;
 	var fc_cw_mp_sp = FCChatConfig.styles.chat_window.main_panel.side_panels;
@@ -41,6 +41,7 @@
 		
 		var firstPart = "" +
 		//Chat panels
+		fc_rule +"*.fc_d1, "+fc_rule2+"*.fc_d1{-moz-overflow-scrolling: touch;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}" +
 		fc_rule +"*.fc_d1, "+fc_rule2+"*.fc_d1{font-family:"+fc_cw_mp_cp.font.family+";font-size:"+fc_cw_mp_cp.font.size+"pt;font-weight:"+fc_cw_mp_cp.font.weight+";color:"+fc_cwtmc+";}"+
 		fc_rule+"*.fc_d1 *, "+fc_rule2+"*.fc_d1 *{font-family:"+fc_cw_mp_cp.font.family+";font-size:"+fc_cw_mp_cp.font.size+"pt;font-weight:"+fc_cw_mp_cp.font.weight+";color:"+fc_cwtmc+";}"+
 		fc_rule+"*.fc_d1 div, "+fc_rule2+"*.fc_d1 div{border:0px;}"+
@@ -50,11 +51,13 @@
 		fc_rule+"*.fc_d1 i.fc_aside, "+fc_rule2+"*.fc_d1 i.fc_aside{font-size:"+(fc_cw_mp_cp.font.timestamp_size)+"pt;}" +
 		
 		//Side panels
+		fc_rule +"*.fc_d2, "+fc_rule2+"*.fc_d2{-moz-overflow-scrolling: touch;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}" +
 		fc_rule+"*.fc_d2, "+fc_rule2+"*.fc_d2{font-family:"+fc_cw_mp_sp.font.family+";font-size:"+fc_cw_mp_sp.font.size+"pt;font-weight:"+fc_cw_mp_sp.font.weight+";color:black;}"+
 		fc_rule+"*.fc_d2 *, "+fc_rule2+"*.fc_d2 *{font-family:"+fc_cw_mp_sp.font.family+";font-size:"+fc_cw_mp_sp.font.size+"pt;font-weight:"+fc_cw_mp_sp.font.weight+";}"+
 		fc_rule+"*.fc_d2 small a, "+fc_rule2+"*.fc_d2 small a{font-size:"+(fc_cw_mp_sp.font.size+1)+"pt;}"+
 		
 		//Options panel
+		fc_rule +"*.fc_d3, "+fc_rule2+"*.fc_d3{-moz-overflow-scrolling: touch;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}" +
 		fc_rule+"*.fc_d3, "+fc_rule2+"*.fc_d3{font-family:arial;font-size:7pt;color:black;}"+
 		fc_rule+"*.fc_d3 *, "+fc_rule2+"*.fc_d3 *{font-family:arial;font-size:7pt;}"+
 		
