@@ -37,7 +37,7 @@ jGo.fcchat_toolbar.style={
 		text:toolbar_base_font,
 		logo_css:"font-size:16px;color:gray;font-weight:normal;",
 		dialog_box:{
-			css:"-webkit-box-shadow:0px 0px 6px 2px rgba(0,0,0,0.4);box-shadow:0px 0px 6px 2px rgba(0,0,0,0.4);background-color:#fefefe;",
+			css:"-webkit-transform: translate3d(0,0,0);-webkit-box-shadow:0px 0px 6px 2px rgba(0,0,0,0.4);box-shadow:0px 0px 6px 2px rgba(0,0,0,0.4);background-color:#fefefe;",
 			alt_css:"border:1px solid darkblue;",
 			title_box_css:"top:0px;left:0px;height:40px;background-color:#2E9FFF;border-bottom:1px solid #cccccc;",
 			list_divider_css:"border-bottom:1px solid transparent;",
