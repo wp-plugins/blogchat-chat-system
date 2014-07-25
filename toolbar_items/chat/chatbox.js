@@ -24,7 +24,7 @@ jGo.fcchat_toolbar.chatbox.style={
 		tab_cover_css:"top: 52px;left:"+(jGo.mobile?245:FCChatConfig.chatbox.dialog_width-70)+"px;width:70px;height:60px;",
 		up_tab_css:"top: 92px;left:"+(jGo.mobile?265:FCChatConfig.chatbox.dialog_width-50)+"px",
 		down_tab_css:"top: 105px;left:"+(jGo.mobile?265:FCChatConfig.chatbox.dialog_width-50)+"px",
-		view_msg_box_css:"top:82px;left:0px;height:200px;padding-top:4px;-moz-overflow-scrolling: touch;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;height:40px;",
+		view_msg_box_css:"top:82px;left:0px;height:200px;padding-top:4px;-moz-overflow-scrolling: touch;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;",
 		send_msg_box_css:"top:286px;left:0px;height:57px;border-top:1px dotted #444444;",
 		input_css:"height:18px !important;background-color:white !important;border:1px solid #2E9FFF !important;color:#44444 !important;",
 		text:jGo.fcchat_toolbar.style.dialog_box.text

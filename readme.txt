@@ -5,7 +5,7 @@ Donate link: http://www.fastcatsoftware.com
 Tags: chat, live comments, instant messaging
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 BLOGCHAT is a live comment and chat system.
 
@@ -205,6 +205,10 @@ Added more mobile compatability. Bottom bar now switches to icon buttons in the 
 = 1.2.1 =
 
 added -webkit-transform: translate3d(0,0,0) support
+
+= 1.2.2 =
+
+Fixed a minor error with the display of the video icon
 
 == Upgrade Notice ==
 
