@@ -36,15 +36,18 @@ var TMp = jGo.DefaultMenu.prototype;
 
 //Create it
 TMp.create = function(id, p){
-	var s = this.style = $.extend({},p[0]);
+	this.style = $.extend({},p[0]);
+	//Correct for scale factor
+	this.style.css['font-size']=Math.round(jGo.util.eN(this.style.css['font-size'])*(jGo._['scalefactor']||1))+'px';
+	var s = this.style;
 	//var left = s.left || (p[3].offset().left+p[3].width()+s.offsetLeft-(p[4][0]===document.body?'0':jGo.util.eN(p[4].offset().left)));
 	//var top = s.top || (p[3].offset().top+s.offsetTop-(p[4][0]===document.body?'0':jGo.util.eN(p[4].offset().top)));
 	this.target=p[3];
-        this.parent=p[4];
-        this.fixed=p[5];
-    	this.mobile=p[6];
+    this.parent=p[4];
+    this.fixed=p[5];
+    this.mobile=p[6];
 	//var forecolor = (s.opacity!=1)?s.color:'transparent';
-	var outerClass = 'jGo_app jGo_myapp defaultmenu'+id;
+	var outerClass = 'jGo_app jGo_myapp jGo_em defaultmenu'+id;
 	var content ="<div style='position:relative'>"+p[1]+"</div>";
 	this.frame=$(document.createElement('div')).addClass(outerClass).attr('id', 'jGo_defaultmenuF' + id).css({position:(this.fixed?'fixed':'absolute'),display:'none','z-index':jGo.config.max_z_index}).css(s.css).html(content);
 	this.parent.append(this.frame);
@@ -79,8 +82,8 @@ TMp.position = function(){
 	right_margin=25,
 	bottom_margin=20,
 	displayLeft = 0;
-	var uPosX = (s.left || (t.offset().left + s.offsetLeft-(p[0]===document.body?'0':jGo.util.eN(p.offset().left)))) - 9;
-	var uPosY = (s.top || (t.offset().top+(this.fixed?-$(document).scrollTop():0)+s.offsetTop-(p[0]===document.body?'0':jGo.util.eN(p.offset().top)))) - 9;
+	var uPosX = (s.left || (t.offset().left + Math.round(s.offsetLeft*(jGo._['scalefactor']||1))-(p[0]===document.body?'0':jGo.util.eN(p.offset().left)))) - 9;
+	var uPosY = (s.top || (t.offset().top+(this.fixed?-$(document).scrollTop():0)+Math.round(s.offsetTop*(jGo._['scalefactor']||1))-(p[0]===document.body?'0':jGo.util.eN(p.offset().top)))) - 9;
 
     var height = this.frame.height();
     var width = this.frame.width();

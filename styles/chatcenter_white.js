@@ -104,7 +104,7 @@ FCChatConfig.styles={
 					border_css:{"border-bottom":"1px dotted #444444","border-top":"2px solid gray"},
 					css:{},
 					msg_interrupt:{
-						background:"#ededff",
+						background:"#ededff;",
 						respond_css:"font-size:8pt;color:#528DC4;text-decoration:none;",
 						close_css:"color:gray;font-stretch:wider;font-size:8pt;font-weight:bold;text-decoration:none;"
 					}
@@ -190,7 +190,7 @@ FCChatConfig.styles={
 					blocked_css:"-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius:4px;background-color:#FF8380;border:1px solid white"
 				},	
 				profile_star:{
-					css:"font-size:16px;font-family:courier;font-weight:bold;color:gold;"
+					css:"font-size:1.333em;font-family:courier;font-weight:bold;color:orange;"
 				},
 				font:{
 					family:"arial",
@@ -312,7 +312,7 @@ FCChatConfig.styles={
 				}
 			},
 			tools_panel:{
-				border:"1px solid silver",
+				border:".083em solid silver",
 				background_color:"white",
 				smileys:{
 					width:300,
@@ -347,6 +347,7 @@ FCChatConfig.styles={
 				link_css:"color:#528DC4",
 				url_css:"color:lightblue",
 				user_info_css:"color:gray",
+				info_css:"color:#bbbbbb",
 				screen_name_css:"font-family:arial;font-size:10pt;color:green;font-weight:700;text-decoration:none;",
 				list_divider_css:"border-bottom:1px solid #dddddd;"
 			},

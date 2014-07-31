@@ -39,6 +39,7 @@ jGo.fcchat_toolbar.chatbox.style={
 		css:{
 			width:"250px",
 			height:"250px",
+			"font-size":"12px",
 			"-webkit-box-shadow": "1px 1px 3px 1px rgba(0,0,0,0.3)",
 			"box-shadow": "0px 0px 3px 1px rgba(0,0,0,0.3)",
 			"background-color":jGo.util.getCSSProp("jGo.fcchat_toolbar.style.dialog_box.css","background-color"),
@@ -203,21 +204,25 @@ jGo.fcchat_toolbar.chatbox.style={
 				"<span id='fc_page_chat_loading' style='"+txt.info+"'>"+__(120,'Loading Chat...Please Wait...')+"</span>";
     };
     
-    var create_infobox = function(_t,s,target,sty){
-    	var menu = _t.createWidget('DefaultMenu', [ s,
-	        menu_content(),                                        
-			null , jQ(target),
-			p = jQ(document.body),(fc_chat.getexp6()||(mobile)?0:1),mobile]);
-    	return menu;
-    };
-    
     var set_more_msgs = function(count){
 		return '<a style="font-weight:bold;'+txt.secondary_link_css+';text-decoration:none"' +
 		'href="javascript:void" onclick="fc_chat.cDisc();return false">&laquo;&laquo; '+__(456,"More") +
 		'</a>&nbsp;<span style="'+txt.info+'">('+count+')</span>';
 	};
+	// Register info menu
+	//  _t fc_chat object
+	//  s default style
+	//  target element opening window
+	jGo._['menu.pg_info'] = function(_t,s,target){ 
+		s = jQ.extend(true, {},jGo.fcchat_toolbar.chatbox.style.infobox_menu);
+    	var menu = _t.createWidget('DefaultMenu', [ s,
+    	      info_box_content(),                                        
+    	      null , jQ(target),
+    	      p = jQ(document.body),(_t.getexp6()||(mobile)?0:1),mobile]);
+    	return menu;
+    };
     
-    var menu_content = function(){
+    var info_box_content = function(){
     	var na = __(464,'Not Specified');
     	var title = FCChatConfig.blog?window.parent.document.title:document.title;
     	if(title>config.infobox_menu.menu_item.max_title_length){
@@ -249,28 +254,28 @@ jGo.fcchat_toolbar.chatbox.style={
     var enable_toolbar_disc = function(){
     	return "<a style='text-decoration:none;' href='javascript:jGo.fcchat_toolbar.chatbox.toggle_blogchat()'>" +
 		(config.menu_item.icon!=''?"<img style='display:block;position:absolute;top:"+ (jGo.fcchat_toolbar.style.icons_16px.top) + "px; left: "+config.menu_item.padding_left+"px;width:16px;height:16px;"+config.menu_item.icon_css+"' src='"+config.menu_item.icon+"'>":"") +
-		"<div id='jGo_disc_txt_inner' style='position:absolute;top:0px;left:"+(config.menu_item.icon!=''?24:10)+"px;width:"+(config.menu_item.width-(config.menu_item.icon!=''?28:7))+"px;padding-top:"+(config.menu_item.padding_top+fc_chat.get_ie_offset())+"px;"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.link_css+";'>" +(page_tags.button_text)+ " "+add_count()+"</div>" +
+		"<div id='jGo_disc_txt_inner' style='position:absolute;top:0px;left:"+(config.menu_item.icon!=''?24:10)+"px;width:"+(config.menu_item.width-(config.menu_item.icon!=''?28:7))+"px;padding-top:"+(config.menu_item.padding_top+fc_chat.get_ie_offset())+"px;"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.link_css+";'>" +(FCChatConfig.blog&&mobile&&jGo.blogdim.width<400?'':page_tags.button_text)+ " "+add_count()+"</div>" +
 		"</a>";
     };
     
     var disable_toolbar_disc = function(){
     	return "<a style='text-decoration:none;cursor:default;' href='javascript:void(0)'>" +
 		(config.menu_item.icon!=''?"<img style='display:block;position:absolute;top:"+ (jGo.fcchat_toolbar.style.icons_16px.top) + "px; left: "+config.menu_item.padding_left+"px;width:16px;height:16px;"+config.menu_item.icon_css+"' src='"+config.menu_item.icon+"'>":"") +
-		"<div id='jGo_disc_txt_inner' style='position:absolute;top:0px;left:"+(config.menu_item.icon!=''?24:10)+"px;width:"+(config.menu_item.width-(config.menu_item.icon!=''?28:7))+"px;padding-top:"+(config.menu_item.padding_top+fc_chat.get_ie_offset())+"px;"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.disabled_css+";'>" +(page_tags.button_text)+ " "+add_count()+"</div>" +
+		"<div id='jGo_disc_txt_inner' style='position:absolute;top:0px;left:"+(config.menu_item.icon!=''?24:10)+"px;width:"+(config.menu_item.width-(config.menu_item.icon!=''?28:7))+"px;padding-top:"+(config.menu_item.padding_top+fc_chat.get_ie_offset())+"px;"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.disabled_css+";'>" +(FCChatConfig.blog&&mobile&&jGo.blogdim.width<400?'':page_tags.button_text)+ " "+add_count()+"</div>" +
 		"</a>";
     };
     
     var enable_toolbar_disc_mobile = function(){
     	return "<a style='text-decoration:none;' href='javascript:jGo.fcchat_toolbar.chatbox.tgl_dialog()'>" +
 		(config.menu_item.icon!=''?"<img style='width:16px;height:16px;"+config.menu_item.icon_css+"' src='"+config.menu_item.icon+"'>":"") +
-		"&nbsp;&nbsp;<span id='jGo_disc_txt_inner' style='"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.link_css+";'>" +(page_tags.button_text)+ " "+add_count()+"</span>" +
+		"&nbsp;&nbsp;<span id='jGo_disc_txt_inner' style='"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.link_css+";'>" +(FCChatConfig.blog&&mobile&&jGo.blogdim.width<400?'':page_tags.button_text)+ " "+add_count()+"</span>" +
 		"</a>";
     };
     
     var disable_toolbar_disc_mobile = function(){
     	return "<a style='text-decoration:none;cursor:default;' href='javascript:void(0)'>" +
 		(config.menu_item.icon!=''?"<img style='width:16px;height:16px;"+config.menu_item.icon_css+"' src='"+config.menu_item.icon+"'>":"") +
-		"&nbsp;&nbsp;<span id='jGo_disc_txt_inner' style='"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.disabled_css+";'>" +(page_tags.button_text)+ " "+add_count()+"</span>" +
+		"&nbsp;&nbsp;<span id='jGo_disc_txt_inner' style='"+jGo.fcchat_toolbar.style.text+";"+config.menu_item.buttons.states.disabled_css+";'>" +(FCChatConfig.blog&&mobile&&jGo.blogdim.width<400?'':page_tags.button_text)+ " "+add_count()+"</span>" +
 		"</a>";
     };
     
@@ -317,7 +322,6 @@ jGo.fcchat_toolbar.chatbox.style={
 	jGo.fcchat_toolbar.chatbox.create_dialogs = function(){return create_dialog();};
 	jGo.fcchat_toolbar.chatbox.append_dialogs = function(content){return append_dialog(content);};
 	jGo.fcchat_toolbar.chatbox.tgl_dialog = function(){return tgl_dialog();};
-	jGo.fcchat_toolbar.chatbox.create_infobox = function(_t,s,target,sty){return create_infobox(_t,s,target,sty)};
 	jGo.fcchat_toolbar.chatbox.set_more_msgs = function(count){return set_more_msgs(count);};
 	jGo.fcchat_toolbar.chatbox.open_blogchat = function(chat_panel){return open_blogchat(chat_panel);};
 	jGo.fcchat_toolbar.chatbox.toggle_blogchat = function(k){return toggle_blogchat(k);};
@@ -330,7 +334,7 @@ jGo.fcchat_toolbar.chatbox.style={
   			"</div>";
   	};
 	var create_dialog = function(){
-		  dialog= "<div class='jGo_app jGo_myapp "+(FCChatConfig.blog?"":"jgo_dialog")+"' id='fc_page_discussion_dialog' style='position:absolute;display: none;visibility: visible;background-color:transparent;text-align:left;height:"+config.dialog_box.height+"px;width:"+config.dialog_box.width+"px;top: 0px; left:0px; z-index:" + (FCChatConfig.blog?0:z_b) + ";overflow:hidden;'>" +
+		  dialog= "<div class='jGo_app jGo_myapp jGo_em "+(FCChatConfig.blog?"":"jgo_dialog")+"' id='fc_page_discussion_dialog' style='position:absolute;display: none;visibility: visible;background-color:transparent;text-align:left;height:"+config.dialog_box.height+"px;width:"+config.dialog_box.width+"px;top: 0px; left:0px; z-index:" + (FCChatConfig.blog?0:z_b) + ";overflow:hidden;'>" +
 			"</div>";
 			return dialog;
 	};
@@ -414,7 +418,7 @@ jGo.fcchat_toolbar.chatbox.style={
 			jQ("#fc_page_discussion_dialog").css("background-color",jGo.fcchat_toolbar.chatbox.style.dialog_box.background_color).html(content);
 			fc_chat.c_px(null, fc_chat.getPx(),8);
 			jQ('div.fc_drag_disc').bind('click',this.click_tab);
-			if(mobile)jQ('input.fc_input').css('font-size','16px');
+			if(mobile)jQ('#fc_sendpagechat').css('font-size','16px');
 			rendered=1;
 		}
 	};
@@ -424,13 +428,14 @@ jGo.fcchat_toolbar.chatbox.style={
 
 	var tgl_dialog = function(){
 		if(!fc_chat.get('login_lock')&&!fc_chat.get('l')){
+			fc_chat.rescale();
 			toggle = jGo.fcchat_toolbar.control.toggle_dialog(jQ("#fc_page_discussion_dialog"),position_dialog,render_dialog_content,200,(FCChatConfig.blog?1:0));
 			fc_chat.tgl_disc();
 			toggle_disc();
 		}
 	};
 	var position_dialog = function(){
-		jGo.fcchat_toolbar.control.position_dialog(jQ("#fc_page_discussion_dialog"),EN(jQ("#fc_chatbox_toolbar_item").css("left")),config.dialog_box.width,config.dialog_box.height)
+		jGo.fcchat_toolbar.control.position_dialog(jQ("#fc_page_discussion_dialog"),EN(jQ("#fc_chatbox_toolbar_item").css("left")),config.dialog_box.width,config.dialog_box.height*(jGo._['scalefactor']||1),1)
 	};
 	
 

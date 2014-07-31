@@ -51,7 +51,7 @@ proto.create = function(id, args){
     this.fadeInt=args[3] || 200;
     this.fadeTimer=(args[4]!=null?args[4]:10000);
     var menucontrol = (args[5]!=null?args[5]:true);
-	var outerClass = 'jGo_app jGo_myapp infobox'+id;
+	var outerClass = 'jGo_app jGo_myapp jGo_em infobox'+id;
 	this.frame=$('<div></div>').addClass(outerClass).attr('id', 'jGo_infoboxF' + id).css({position:(this.fixed?'fixed':'absolute'),display:'none','z-index':jGo.config.max_z_index});
 	this.parent.append(this.frame);
 	if(menucontrol){
@@ -69,7 +69,10 @@ proto.fill = function(content,debug){
 		this.debug+="</br>" + content;
 		content=this.debug;
 	};
-	this.frame.html("<div id='jGo_infobox_content" + this.id + "' style='"+this.style.css+"'>"+content+"</div>");
+	//Correct for scale factor
+	var css = $.extend({},this.style.css);
+	css['font-size']=Math.round(jGo.util.eN(this.style.css['font-size'])*(jGo._['scalefactor']||1))+'px';
+	this.frame.html("<div id='jGo_infobox_content" + this.id + "'>"+content+"</div>").css(css);
 };
 /*
  *  show

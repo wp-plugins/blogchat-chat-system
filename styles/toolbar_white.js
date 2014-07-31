@@ -21,8 +21,8 @@
  */
 
 (function(){
-var toolbar_base_font = "color:#444444;font-size:8pt;font-family:arial;font-weight:bold;";
-
+	var toolbar_base_font = "color:#444444;font-size:8pt;font-family:arial;font-weight:bold;";
+	var border_radius_4 = "-moz-border-radius: .333em;-webkit-border-radius: .333em;border-radius:.333em;";
 jGo.fcchat_toolbar.style={
 		height:35,
 		border_height:2,
@@ -33,30 +33,37 @@ jGo.fcchat_toolbar.style={
 			links:"background-color:darkblue;color:#fff;"
 		},
 		alt_css:"border-right:1px solid #cccccc;border-left:1px solid #cccccc;",
-		text_size:"font-size:8pt",
+		text_size:"font-size:12px",
 		text:toolbar_base_font,
 		logo_css:"font-size:16px;color:gray;font-weight:normal;",
 		dialog_box:{
-			css:"-webkit-transform: translate3d(0,0,0);-webkit-box-shadow:0px 0px 6px 2px rgba(0,0,0,0.4);box-shadow:0px 0px 6px 2px rgba(0,0,0,0.4);background-color:#fefefe;",
-			alt_css:"border:1px solid darkblue;",
-			title_box_css:"top:0px;left:0px;height:40px;background-color:#2E9FFF;border-bottom:1px solid #cccccc;",
-			list_divider_css:"border-bottom:1px solid transparent;",
+			css:"-webkit-transform: translate3d(0,0,0);-webkit-box-shadow:0em 0em .5em .167em rgba(0,0,0,0.4);box-shadow:0em 0em .5em .167em rgba(0,0,0,0.4);background-color:#fefefe;",
+			alt_css:"border:.083em soliddarkblue;",
+			title_box_css:"top:0em;left:0em;height:3.333em;background-color:#2E9FFF;border-bottom:.083em solid #cccccc;",
+			list_divider_css:"border-bottom:.083em solid transparent;",
 			select_user:{
 				over_color:"#f0f9ff",
 				off_color:"transparent",
 				selected_color:"#d3ffd3"
 			},
+			user_icon:{
+				online_css:border_radius_4+"background-color:#54FD74;border:.083em solid white",
+				offline_css:border_radius_4+"background-color:transparent;border:.083em solid#aaaaaa",
+				busy_css:border_radius_4+"background-color:yellow;border:.083em solid white",
+				blocked_css:border_radius_4+"background-color:#FF8380;border:.083em solid white"
+			},
 			text:{
-				css:"font-family:arial;font-size:12px;color:#444444;",
+				css:"font-family:arial;color:#444444;",
 				title_css:"font-weight:bold;color:white;",
 				link_css:"color:white;",
 				disabled_css:"color:#dddddd;",
 				secondary_link_css:"color:#528DC4;text-decoration:none;",
-				screen_name_css:"font-family:arial;font-size:10pt;color:green;font-weight:700;text-decoration:none;",
+				screen_name_css:"font-family:arial;font-size:1.083em;color:green;font-weight:700;text-decoration:none;",
 				timestamp_css:"color:green;",
 				info:"color:gray;font-style:italic;",
 				user_info_css:"color:#888888;",
-				offline_css:"font-style:italic;color:green;"
+				offline_css:"font-style:italic;color:green;",
+				user_title_css:"font-style:italic;color:darkblue;"
 			}
 		},
 		menus:{
@@ -68,22 +75,23 @@ jGo.fcchat_toolbar.style={
 					offsetTop:0
 				},
 				css:{
-					width:"200px",
-					height:"230px",
-					"-webkit-box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
-					"box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
+					width:"16.667em",
+					height:"19.167em",
+					"font-size":"12px",
+					"-webkit-box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
+					"box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
 					"background-color":"#fff",
-					border:"1px solid silver"
+					border:".083em solid silver"
 				},
 				menu_item:{
-					dim:"width:200px;height:30px;",
-					css:"padding:8px;font:10pt arial;font-weight:bold;",
+					dim:"width:16.667em;height:2.5em;",
+					css:"padding:.667em;font:1.083em arial;font-weight:bold;",
 					link_color:"#444444",
 					link_css:"text-decoration:none",
 					disabled_link_color:"#999999",
 					hover_color:"#f0f9ff",
 					hide_icon:{
-						css:"color:#444444;font-stretch:wider;font-size:16px;font-weight:bold;text-decoration:none"
+						css:"color:#444444;font-stretch:wider;font-size:1.083em;font-weight:bold;text-decoration:none"
 					}
 				}
 			},
@@ -95,17 +103,18 @@ jGo.fcchat_toolbar.style={
 					offsetTop:30
 				},
 				css:{
-					width:"200px",
-					height:"80px",
-					"-webkit-box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
-					"box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
+					width:"16.667em",
+					height:"6.667em",
+					"font-size":"12px",
+					"-webkit-box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
+					"box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
 					"background-color":"#eeeeee",
-					border:"1px solid silver"
+					border:".083em solid silver"
 				},
 				menu_item:{
-					css:"padding:8px;font:10pt arial;",
+					css:"padding:.667em;font:1.083em arial;",
 					hide_icon:{
-						css:"color:#444444;font-stretch:wider;font-size:16px;font-weight:bold;text-decoration:none"
+						css:"color:#444444;font-stretch:wider;font-size:1.083em;font-weight:bold;text-decoration:none"
 					}
 				}
 			},
@@ -117,22 +126,23 @@ jGo.fcchat_toolbar.style={
 					offsetTop:30
 				},
 				css:{
-					width:"200px",
-					height:"200px",
-					"-webkit-box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
-					"box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
+					width:"16.667em",
+					height:"16.667em",
+					"font-size":"12px",
+					"-webkit-box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
+					"box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
 					"background-color":"#fff",
-					border:"1px solid silver"
+					border:".083em solid silver"
 				},
 				menu_item:{
-					dim:"width:200px;height:30px;",
-					css:"padding:8px;font:10pt arial;font-weight:bold;",
+					dim:"width:16.667em;height:2.5em;",
+					css:"padding:.667em;font:1.083em arial;font-weight:bold;",
 					link_color:"#444444",
 					link_css:"text-decoration:none",
 					disabled_link_color:"#999999",
 					hover_color:"#f0f9ff",
 					hide_icon:{
-						css:"color:#444444;font-stretch:wider;font-size:16px;font-weight:bold;text-decoration:none"
+						css:"color:#444444;font-stretch:wider;font-size:1.083em;font-weight:bold;text-decoration:none"
 					}
 				}
 			},
@@ -144,28 +154,40 @@ jGo.fcchat_toolbar.style={
 					offsetTop:30
 				},
 				css:{
-					width:"200px",
-					height:"85px",
-					"-webkit-box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
-					"box-shadow": "2px 2px 2px 1px rgba(0,0,0,0.5)",
+					width:"15.667em",
+					height:"7.083em",
+					"font-size":"12px",
+					"-webkit-box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
+					"box-shadow": ".167em .167em .167em .083em rgba(0,0,0,0.5)",
 					"background-color":"#eeeeee",
-					border:"1px solid silver"
+					border:".083em solid silver"
 				},
 				menu_item:{
-					css:"padding:9px;font:10pt arial;",
+					css:"padding:.667em;font:1.083em arial;",
 					set_notice:{
 						css:"color:green;font-weight:bold;font-style:italic"
 					},
 					hide_icon:{
-						css:"color:#444444;font-stretch:wider;font-size:16px;font-weight:bold;text-decoration:none"
+						css:"color:#444444;font-stretch:wider;font-size:1.083em;font-weight:bold;text-decoration:none"
 					}
 				}
 			},
 			set_nickname:{
-				css:"font:10pt arial;width:300px;-webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.5);box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.5);background-color:#eeeeee;padding:15px;border:1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px;",
+				css:{
+					"font-size":"12px",
+					width:"25em",
+					"-webkit-box-shadow": "0em 0em .167em .167em rgba(0,0,0,0.5)",
+					"box-shadow": "0em 0em .167em .167em rgba(0,0,0,0.5)",
+					"background-color":"#eeeeee",
+					padding:"1.25em",
+					border:".083em solid black",
+					"-moz-border-radius":".167em",
+					"-webkit-border-radius":".167em",
+					"border-radius":".167em"
+				},
 				menu_item:{
-					link_css:"font:10pt arial;",
-					input_css:"width:290px;",
+					link_css:"font:1.083em arial;",
+					input_css:"width:24.167em;",
 					set_notice:{
 						css:"color:green;font-weight:bold;font-style:italic"
 					}

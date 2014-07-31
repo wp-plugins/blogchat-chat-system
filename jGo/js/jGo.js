@@ -646,6 +646,9 @@ jGo.config = {
 			jGo.UI.addEventHandler(type, name, obj, method, scope, pos);
 	};
 	
+	// Generic Handles
+	jGo._={};
+	
 	//Hooks
 	jGo.hooks = {
 		addHook : function(type, name, obj, method) {

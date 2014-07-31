@@ -89,26 +89,26 @@
 			height:(jGo.mobile?348:343),
 			css:jGo.fcchat_toolbar.style.dialog_box.css,
 			title_box_css:jGo.fcchat_toolbar.style.dialog_box.title_box_css,
-			greeting_box_css:"top:40px;left:0px;height:40px;border-top:1px solid #cccccc;border-bottom:1px dotted #444444;",
+			greeting_box_css:"top:3.333em;left:0em;height:3.333em;border-top:.083em solid #cccccc;border-bottom:.083em dotted #444444;",
 			greeting_box_link:jGo.fcchat_toolbar.style.dialog_box.text.secondary_link_css,
-			list_box_css:"top:82px;left:0px;height:193px;"+mobile_scrolling,
+			list_box_css:"top:6.833em;left:0em;height:16.083em;"+mobile_scrolling,
 			list_divider_css:jGo.fcchat_toolbar.style.dialog_box.list_divider_css,
-			info_box_css:"top:275px;left:0px;height:67px;border-top:1px dotted #444444;",
+			info_box_css:"top:22.917em;left:0em;height:5.583em;border-top:.083em dotted #444444;",
 			text:jGo.fcchat_toolbar.style.dialog_box.text
 		},
 		new_messages_box:{
 			top:43,
 			left:0,
 			toolbar_offset:3,
-			width:(jGo.mobile?280:300),
+			width:280,
 			height:(jGo.mobile?348:343),
 			css:jGo.fcchat_toolbar.style.dialog_box.css,
 			title_box_css:jGo.fcchat_toolbar.style.dialog_box.title_box_css,
-			greeting_box_css:"top:40px;left:0px;height:40px;border-top:1px solid #cccccc;border-bottom:1px dotted #444444;",
+			greeting_box_css:"top:3.333em;left:0em;height:3.333em;border-top:.083em solid #cccccc;border-bottom:.083em dotted #444444;",
 			greeting_box_link:jGo.fcchat_toolbar.style.dialog_box.text.secondary_link_css,
-			view_msg_box_css:"top:82px;left:0px;height:193px;margin-top:4px;"+mobile_scrolling,
-			send_msg_box_css:"top:275px;left:0px;height:67px;border-top:1px dotted #444444;",
-			input_css:"height:18px !important;background-color:white !important;border:1px solid silver !important;margin-left:2px !important;color:#44444 !important;",
+			view_msg_box_css:"top:6.833em;left:0em;height:16.083em;margin-top:.333em;"+mobile_scrolling,
+			send_msg_box_css:"top:22.917em;left:0em;height:5.583em;border-top:.083em dotted #444444;",
+			input_css:"font-size:1em;height:1.5em !important;padding:0em;background-color:white !important;border:.083em solid silver !important;margin-left:.12525em !important;color:#44444 !important;",
 			text:jGo.fcchat_toolbar.style.dialog_box.text,
 			msg_interrupt:{
 				css:"background-color:#ededff;",
@@ -124,11 +124,11 @@
 			height:(jGo.mobile?348:343),
 			css:jGo.fcchat_toolbar.style.dialog_box.css,
 			title_box_css:jGo.fcchat_toolbar.style.dialog_box.title_box_css,
-			greeting_box_css:"top:40px;left:0px;height:40px;border-top:1px solid #cccccc;border-bottom:1px dotted #444444;",
+			greeting_box_css:"top:3.333em;left:0em;height:3.333em;border-top:.083em solid #cccccc;border-bottom:.083em dotted #444444;",
 			greeting_box_link:jGo.fcchat_toolbar.style.dialog_box.text.secondary_link_css,
-			list_box_css:"top:82px;left:0px;height:193px;"+mobile_scrolling,
+			list_box_css:"top:6.833em;left:0em;height:16.083em;"+mobile_scrolling,
 			list_divider_css:jGo.fcchat_toolbar.style.dialog_box.list_divider_css,
-			info_box_css:"top:275px;left:0px;height:67px;border-top:1px dotted #444444;",
+			info_box_css:"top:22.917em;left:0em;height:5.583em;border-top:.083em dotted #444444;;",
 			text:jGo.fcchat_toolbar.style.dialog_box.text
 		},
 		chatrooms_box:{
@@ -138,34 +138,34 @@
 			height:(jGo.mobile?348:343),
 			css:jGo.fcchat_toolbar.style.dialog_box.css,
 			title_box_css:jGo.fcchat_toolbar.style.dialog_box.title_box_css,
-			list_box_css:"top:93px;left:0px;height:180px;border-top:1px solid #cccccc;"+mobile_scrolling,
+			list_box_css:"top:3.333em;left:0em;height:25.167em;border-top:.083em solid #cccccc;"+mobile_scrolling,
 			text:jGo.fcchat_toolbar.style.dialog_box.text,
 			selected_color:"lightblue",
 			hover_color:"#e6e6e6",
 			background_color:"transparent",
-			separator:"1px solid #dddddd",
-			room_name_font_css:"font-size:14px;font-weight:bold;color:#444444;",
-			font_css:"color:#444444;font-family:arial;font-weight:normal;font-size:12px;",
-			count_font_css:"font-size:14px;color:blue;font-weight:bold;",
-			disabled_room_name_font_css:"font-size:14px;font-weight:bold;color:#8888aa;",
+			separator:".083em solid #dddddd",
+			room_name_font_css:"font-size:1.167em;font-weight:bold;color:#444444;",
+			font_css:"color:#444444;font-family:arial;font-weight:normal;font-size:1em;",
+			count_font_css:"font-size:1.167em;color:blue;font-weight:bold;",
+			disabled_room_name_font_css:"font-size:1.167em;font-weight:bold;color:#8888aa;",
 			room_passwords:{
 				font:{
-					textfield_description_css:"font-family:arial;font-size:12px;color:#darkgray;font-style:italic;font-weight:bold;"
+					textfield_description_css:"font-family:arial;font-size:1em;color:#darkgray;font-style:italic;font-weight:bold;"
 				},
-				textfield_css:"background-color:white;border:1px solid #444444;padding:5px;color:#444444"
+				textfield_css:"background-color:white;border:.083em solid #444444;padding:.417em;color:#444444"
 			}
 		},
 		login_panel:{
 			top:43,
 			left:5,
-			box_shadow:"0px 0px 12px 2px rgba(0,0,0,0.5)",
+			box_shadow:"0em 0em 1em .167em rgba(0,0,0,0.5)",
 			background_color:"#eeeeee",
-			border:"2px solid gray",
+			border:".167em solid gray",
 			font:{
-				textfield_description_css:{"font-family":"arial","font-size":"10pt",color:"black","font-style":"italic","font-weight":"bold"},
-				smalltext_css:{"margin-right":"10px","font-family":"arial","font-size":"10pt",color:"black"}
+				textfield_description_css:{"font-family":"arial","font-size":"1.083em",color:"black","font-style":"italic","font-weight":"bold"},
+				smalltext_css:{"margin-right":".833em","font-family":"arial","font-size":"1.083em",color:"black"}
 			},
-			textfield_css:"background-color:#dddddd !important;color:#444444 !important;width:180px !important;height:18px !important;"
+			textfield_css:"background-color:#dddddd !important;color:#444444 !important;width:15em !important;height:1.5em !important;"
 		}
 	};
 	/*Apply style overrides*/

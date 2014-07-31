@@ -301,13 +301,13 @@ proto.toggle_dialog = function(dialog,position,render,fade,blogmode){
  *  	width - width of the dialog
  *  	height - height of the dialog
  */
-proto.position_dialog = function(dialog,left,width,height){
+proto.position_dialog = function(dialog,left,width,height,left_justify){
 	var elem = "#"+this.app_prefix+"toolbar_inner";
 	var use_abs = this.IE6Mode||this.config.mobile||this.fixed==0;
 	var bot_offset = (this.config.layout==0?8:10);
 	var pos = (use_abs?"absolute":"fixed");
 	var basepos = Math.max(3,jGo.util.eN(jGo.util.returnElementCoordinates(elem,!(use_abs)).x)+left);
-	var subtract = Math.min(0,this.getCurrentWidth()-left-(width+3));
+	var subtract = (!left_justify?Math.min(0,this.getCurrentWidth()-left-(width+3)):0);
 	dialog.css({
 		position:pos,
 		top:((jGo.util.returnElementCoordinates(elem,!(use_abs)).y)-(this.placement%2!=0?-this.frame.height()-4:bot_offset+height-this.style.border_height))+'px',
