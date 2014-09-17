@@ -251,6 +251,10 @@ function isBad(){alert('Cannot load image');return false}
  			}
  			else
  			{
+				//Remove all dots from the filename and replace with underscores, except the last one.
+				$lastDot = strrpos($filename, ".");
+				$filename = str_replace(".", "_", substr($filename, 0, $lastDot)) . substr($filename, $lastDot);
+
 				//get the size of the image in bytes
  				//$_FILES['image']['tmp_name'] is the temporary filename of the file
  				//in which the uploaded file was stored on the server
