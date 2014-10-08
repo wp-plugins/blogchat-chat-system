@@ -1,4 +1,4 @@
-#jGo_app.jGo_myapp div, #jGo_app.jGo_myapp span, #jGo_app.jGo_myapp p, .jGo_app.jGo_myapp div, .jGo_app.jGo_myapp span, .jGo_app.jGo_myapp p {width:auto;height:auto;max-width:none;max-height:none;position:static;float:none;overflow:visible;zoom:normal;writing-mode:lr-tb;background:transparent none;padding:0px;margin:0px;font:12px arial;border:none;color:black;direction:ltr;line-height:normal;letter-spacing:normal;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;unicode-bidi:normal;white-space:normal;word-spacing:normal}
+#jGo_app.jGo_myapp div, #jGo_app.jGo_myapp span, #jGo_app.jGo_myapp p, .jGo_app.jGo_myapp div, .jGo_app.jGo_myapp span, .jGo_app.jGo_myapp p {box-sizing:content-box;width:auto;height:auto;max-width:none;max-height:none;position:static;float:none;overflow:visible;zoom:normal;writing-mode:lr-tb;background:transparent none;padding:0px;margin:0px;font:12px arial;border:none;color:black;direction:ltr;line-height:normal;letter-spacing:normal;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;unicode-bidi:normal;white-space:normal;word-spacing:normal}
 #jGo_app.jGo_myapp a, .jGo_app.jGo_myapp a {padding:0px;margin:0px;font:12px arial;border:none;color:black;direction:ltr;line-height:normal;letter-spacing:normal;text-align:left;text-decoration:underline;text-indent:0;text-shadow:none;text-transform:none;unicode-bidi:normal;white-space:normal;word-spacing:normal}
 #jGo_app.jGo_myapp a:hover, .jGo_app.jGo_myapp a:hover {background:transparent none;border:none;direction:ltr;line-height:normal;letter-spacing:normal;text-align:left;text-decoration:underline;text-indent:0;text-shadow:none;text-transform:none;unicode-bidi:normal;white-space:normal;word-spacing:normal}
 #jGo_app.jGo_myapp font, .jGo_app.jGo_myapp font {font:12px arial;color:black;direction:ltr;line-height:normal;letter-spacing:normal;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;unicode-bidi:normal;white-space:normal;word-spacing:normal}
@@ -15,10 +15,14 @@ font-size: 100%;
 width:auto;
 height:auto;
 line-height:normal;
+padding:0px,
+margin:0px;
+box-sizing:content-box;
 }
 #jGo_app.jGo_myapp textarea,.jGo_app.jGo_myapp textarea{
 padding:0px;
 margin:0px;
+box-sizing:content-box;
 }
 
 
