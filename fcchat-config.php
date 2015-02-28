@@ -240,6 +240,7 @@ To effectively use template overrides, you will need to read this tutorial: <a t
 		"showTyping"=>array("value"=>"true","type"=>"radio","quote"=>"0","desc"=>"Display the word 'typing' when a user is typing a message."),
 		"display_timestamp"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Show the date and time of new chat messages by default."),
 		"sounds_on"=>array("value"=>"true","type"=>"radio","quote"=>"0","desc"=>"Use sound effects by default."),
+		"room_alerts_on"=>array("value"=>"false","type"=>"radio","quote"=>"0","desc"=>"Room alerts are enabled by default."),
 		"mobile_regex"=>array("value"=>"/iphone|ipod|android|mobile|blackberry|bb10|mini|windows\sce|palm/i","type"=>"text","quote"=>"0","sz"=>"100","desc"=>"A regex containing a list of known mobile identifiers. This regex is matched against the browsers useragent string."),
 		"tablet_regex"=>array("value"=>"/ipad|tablet/i","type"=>"text","quote"=>"0","sz"=>"100","desc"=>"A regex containing a list of known tablet identifiers. This regex is matched against the browsers useragent string."),
 		"fixed_support_regex"=>array("value"=>"/cpu os [6-9]|iphone os [6-9]|android [4-9]|bb10|(?=.*blackberry)(?=.*version\/[7-9])/i","type"=>"text","quote"=>"0","sz"=>"100","desc"=>"A regex which attempts to match devices with full support for fixed positioning. This regex is matched against the browsers useragent string."),
